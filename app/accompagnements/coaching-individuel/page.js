@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import TestimonialCarousel from "@/components/TestimonialCarousel";
 
 export const metadata = {
   title: "Coaching individuel — SHIFT",
@@ -28,6 +29,17 @@ const BENEFICES = [
   "Clarifier ses besoins et ses limites",
   "Renforcer sa capacité à agir",
   "Évoluer dans un espace confidentiel, à son rythme",
+];
+
+const TESTIMONIALS = [
+  {
+    text: "Alexandre m'a d'abord aidé à comprendre pourquoi cet objectif était important pour moi, quelles étaient mes motivations profondes pour ce rôle de manager. Ensuite, nous sommes partis de cas concrets pour lister des idées et faire évoluer mon style de management dans la bonne direction. Trois séances ont suffi pour que je me sente aujourd'hui mieux équipé sur ce sujet.",
+    name: "Hugo",
+  },
+  {
+    text: "J'ai vraiment compris la force des petites actions et des « petits pas » pour m'amener vers un objectif. Encore aujourd'hui, dès que le doute s'installe, je me pousse à agir et je calibre ces actions de la bonne façon.",
+    name: "Camille P.",
+  },
 ];
 
 export default function CoachingIndividuel() {
@@ -63,8 +75,9 @@ export default function CoachingIndividuel() {
           Coaching individuel
         </h1>
         <p style={{ fontSize: 17, lineHeight: 1.65, color: "var(--muted)", margin: 0, maxWidth: 620 }}>
-          Prise de poste, changement de rôle, sentiment de manque de légitimité, quête de sens : un
-          accompagnement individuel pour avancer sur sa propre situation, à son rythme.
+          Un espace confidentiel pour avancer à votre rythme sur ce qui vous occupe aujourd&apos;hui, quelle
+          que soit votre situation professionnelle. Le temps et le cadre pour comprendre où vous en êtes, et
+          construire votre propre manière d&apos;avancer.
         </p>
       </section>
 
@@ -114,51 +127,38 @@ export default function CoachingIndividuel() {
         </div>
       </section>
 
-      <section style={{ padding: "8px clamp(20px,6vw,64px) 72px" }}>
-        <p style={{ fontSize: 13, letterSpacing: "1.5px", textTransform: "uppercase", color: "var(--muted)", margin: "0 0 20px" }}>
-          Témoignage
-        </p>
-        <div style={{ maxWidth: 660 }}>
-          <span style={{ fontFamily: "var(--font-lora), serif", fontSize: 44, lineHeight: 0.8, color: "var(--accent)", display: "block", margin: "0 0 8px" }}>
-            &quot;
-          </span>
-          <p style={{ fontFamily: "var(--font-lora), serif", fontStyle: "italic", fontSize: 19, lineHeight: 1.65, color: "var(--text)", margin: "0 0 22px" }}>
-            Alexandre m&apos;a d&apos;abord aidé à comprendre pourquoi cet objectif était important pour moi,
-            quelles étaient mes motivations profondes pour ce rôle de manager. Ensuite, nous sommes partis de
-            cas concrets pour lister des idées et faire évoluer mon style de management dans la bonne
-            direction. Trois séances ont suffi pour que je me sente aujourd&apos;hui mieux équipé sur ce
-            sujet.
-          </p>
-          <div style={{ width: 44, height: 1, background: "oklch(0.62 0.10 40 / 0.5)", margin: "0 0 12px" }}></div>
-          <p style={{ fontSize: 14, color: "var(--muted)", margin: 0 }}>Hugo</p>
-        </div>
-      </section>
-
       <section style={{ padding: "0 clamp(20px,6vw,64px) 88px" }}>
         <div
           style={{
             background: "var(--primary)",
             color: "var(--bg)",
-            borderRadius: 24,
-            padding: "clamp(36px,6vw,56px)",
+            borderRadius: 16,
+            padding: "clamp(20px,3vw,30px)",
             display: "flex",
             flexWrap: "wrap",
-            gap: 24,
+            gap: 18,
             alignItems: "center",
             justifyContent: "space-between",
           }}
         >
-          <h2 style={{ fontFamily: "var(--font-lora), serif", fontWeight: 500, fontSize: "clamp(22px,2.8vw,28px)", margin: 0, maxWidth: 460 }}>
-            Envie d&apos;échanger sur votre situation ?
+          <h2 style={{ fontFamily: "var(--font-lora), serif", fontWeight: 500, fontSize: "clamp(17px,1.6vw,20px)", margin: 0, maxWidth: 420 }}>
+            Prêt à en discuter&nbsp;?
           </h2>
           <Link
             href="/rendez-vous"
             className="btn-on-dark"
-            style={{ padding: "14px 26px", borderRadius: 999, fontSize: 15, fontWeight: 600, whiteSpace: "nowrap" }}
+            style={{ padding: "11px 22px", borderRadius: 999, fontSize: 14, fontWeight: 600, whiteSpace: "nowrap" }}
           >
-            Échanger sur ma situation
+            Prendre rendez-vous
           </Link>
         </div>
+      </section>
+
+      <section style={{ padding: "0 clamp(20px,6vw,64px) 72px", overflow: "hidden" }}>
+        <p style={{ fontSize: 13, letterSpacing: "1.5px", textTransform: "uppercase", color: "var(--muted)", margin: "0 0 20px" }}>
+          Témoignages
+        </p>
+        <TestimonialCarousel testimonials={TESTIMONIALS} />
       </section>
 
       <Footer />

@@ -22,9 +22,7 @@ export default function AtelierTheatreScene({ children }) {
       const y = window.scrollY || (document.scrollingElement ? document.scrollingElement.scrollTop : 0);
       const vh = window.innerHeight;
 
-      const wrap = document.getElementById("curtain-wrap");
       const hdr = document.querySelector("header");
-      if (wrap && hdr) wrap.style.top = hdr.offsetHeight + "px";
       const rigEl = document.getElementById("stage-rig");
       if (rigEl && hdr) rigEl.style.top = hdr.offsetHeight + "px";
 
@@ -36,16 +34,16 @@ export default function AtelierTheatreScene({ children }) {
       curtainR.style.transform = "translateX(" + riseP * 260 + "px)";
 
       const st = pageTop(z3);
-      const local = clamp01(((y - st) / Math.max(1, vh)) * 1.5);
+      const local = clamp01(((y - st + vh * 0.55) / Math.max(1, vh)) * 1.6);
       const zone4Top = z4 ? pageTop(z4) : st + z3.offsetHeight;
-      const inStage = y >= st - vh * 0.3 && y < zone4Top;
+      const inStage = y >= st - vh * 0.85 && y < zone4Top;
 
       if (stage) stage.style.opacity = inStage ? "1" : "0";
       if (rig) rig.style.opacity = inStage ? "1" : "0";
       const leftP = clamp01(local * 1.3);
-      const rightP = clamp01((local - 0.12) * 1.3);
-      if (beamL) beamL.style.opacity = inStage ? String(0.15 + leftP * 0.65) : "0";
-      if (beamR) beamR.style.opacity = inStage ? String(0.15 + rightP * 0.65) : "0";
+      const rightP = clamp01((local - 0.1) * 1.3);
+      if (beamL) beamL.style.opacity = inStage ? String(0.25 + leftP * 0.7) : "0";
+      if (beamR) beamR.style.opacity = inStage ? String(0.25 + rightP * 0.7) : "0";
     };
 
     let raf = null;
@@ -89,23 +87,51 @@ export default function AtelierTheatreScene({ children }) {
         id="curtain-wrap"
         aria-hidden="true"
         style={{
-          position: "fixed",
-          inset: 0,
+          position: "absolute",
+          left: 0,
+          right: 0,
+          top: 0,
+          height: "100vh",
           zIndex: 0,
           pointerEvents: "none",
           overflow: "hidden",
-          color: "oklch(0.52 0.09 150)",
+          color: "oklch(0.82 0.045 70)",
         }}
       >
         <svg viewBox="0 0 800 600" preserveAspectRatio="xMidYMin slice" style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }}>
-          <g id="pelmet" stroke="currentColor" strokeWidth="1.3" fill="none" opacity="0.6">
-            <path d="M0 35 C130 85 230 10 400 55 C570 10 670 85 800 35"></path>
-          </g>
-          <g id="curtainL" stroke="currentColor" strokeWidth="1.6" fill="none" opacity="0.75">
+          <g id="curtainL" stroke="currentColor" strokeWidth="2.4" fill="oklch(0.82 0.045 70 / 0.3)" opacity="1">
             <path d="M15 15 C-25 130 45 240 10 345 C-20 430 50 520 5 640 L148 640 C110 520 170 430 100 345 C128 240 175 130 128 15 Z"></path>
           </g>
-          <g id="curtainR" stroke="currentColor" strokeWidth="1.6" fill="none" opacity="0.75">
+          <g id="curtainR" stroke="currentColor" strokeWidth="2.4" fill="oklch(0.82 0.045 70 / 0.3)" opacity="1">
             <path d="M785 15 C825 130 755 240 790 345 C820 430 750 520 795 640 L652 640 C690 520 630 430 700 345 C672 240 625 130 672 15 Z"></path>
+          </g>
+        </svg>
+      </div>
+
+      <div
+        id="pelmet-wrap"
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          left: 0,
+          right: 0,
+          top: 0,
+          height: "100vh",
+          zIndex: 4,
+          pointerEvents: "none",
+          overflow: "hidden",
+          color: "oklch(0.82 0.045 70)",
+        }}
+      >
+        <svg viewBox="0 0 800 600" preserveAspectRatio="xMidYMin slice" style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }}>
+          <g id="pelmet">
+            <path d="M0 -40 L800 -40 L800 35 C670 85 570 10 400 55 C230 10 130 85 0 35 Z" fill="var(--primary-dark)"></path>
+            <path
+              d="M0 -40 L800 -40 L800 35 C670 85 570 10 400 55 C230 10 130 85 0 35 Z"
+              fill="oklch(0.82 0.045 70 / 0.3)"
+              stroke="currentColor"
+              strokeWidth="2"
+            ></path>
           </g>
         </svg>
       </div>
@@ -124,32 +150,7 @@ export default function AtelierTheatreScene({ children }) {
           transition: "opacity .5s ease",
         }}
       >
-        <svg viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }}>
-          <g id="stageFloor" stroke="currentColor" strokeWidth="1.3" fill="none" opacity="0.4">
-            <path d="M0 380 L800 380"></path>
-            <path d="M400 340 L40 600"></path>
-            <path d="M400 340 L130 600"></path>
-            <path d="M400 340 L220 600"></path>
-            <path d="M400 340 L310 600"></path>
-            <path d="M400 340 L400 600"></path>
-            <path d="M400 340 L490 600"></path>
-            <path d="M400 340 L580 600"></path>
-            <path d="M400 340 L670 600"></path>
-            <path d="M400 340 L760 600"></path>
-            <path d="M327 420 L333 420"></path>
-            <path d="M383 420 L389 420"></path>
-            <path d="M439 420 L445 420"></path>
-            <path d="M495 420 L501 420"></path>
-            <path d="M226 480 L235 480"></path>
-            <path d="M323 480 L332 480"></path>
-            <path d="M420 480 L429 480"></path>
-            <path d="M517 480 L526 481"></path>
-            <path d="M203 560 L215 560"></path>
-            <path d="M355 560 L367 560"></path>
-            <path d="M508 560 L520 561"></path>
-            <path d="M660 560 L672 561"></path>
-          </g>
-        </svg>
+        <svg viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }}></svg>
       </div>
 
       <div

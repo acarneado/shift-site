@@ -116,9 +116,9 @@ export default function Formations() {
           Formations
         </h1>
         <p style={{ fontSize: 17, lineHeight: 1.65, color: "var(--muted)", margin: 0, maxWidth: 620 }}>
-          Des formats courts pour outiller managers et équipes sur la posture managériale, la légitimité et
-          la prise de poste, adaptés au contexte de l&apos;entreprise. Certains s&apos;appuient sur des mises
-          en situation inspirées du théâtre.
+          Des formats courts et concrets, pensés pour donner à vos équipes des repères communs face aux
+          situations professionnelles du quotidien. Un temps collectif, adapté à votre contexte
+          d&apos;entreprise, pour avancer et évoluer ensemble.
         </p>
       </section>
 
@@ -190,24 +190,24 @@ export default function Formations() {
           style={{
             background: "var(--primary)",
             color: "var(--bg)",
-            borderRadius: 24,
-            padding: "clamp(36px,6vw,56px)",
+            borderRadius: 16,
+            padding: "clamp(20px,3vw,30px)",
             display: "flex",
             flexWrap: "wrap",
-            gap: 24,
+            gap: 18,
             alignItems: "center",
             justifyContent: "space-between",
           }}
         >
-          <h2 style={{ fontFamily: "var(--font-lora), serif", fontWeight: 500, fontSize: "clamp(22px,2.8vw,28px)", margin: 0, maxWidth: 460 }}>
-            Envie de parler de votre besoin ?
+          <h2 style={{ fontFamily: "var(--font-lora), serif", fontWeight: 500, fontSize: "clamp(17px,1.6vw,20px)", margin: 0, maxWidth: 420 }}>
+            Prêt à en discuter&nbsp;?
           </h2>
           <Link
             href="/rendez-vous"
             className="btn-on-dark"
-            style={{ padding: "14px 26px", borderRadius: 999, fontSize: 15, fontWeight: 600, whiteSpace: "nowrap" }}
+            style={{ padding: "11px 22px", borderRadius: 999, fontSize: 14, fontWeight: 600, whiteSpace: "nowrap" }}
           >
-            Parlons de votre besoin
+            Prendre rendez-vous
           </Link>
         </div>
       </section>

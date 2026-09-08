@@ -29,9 +29,12 @@ export default function RendezVous() {
           Ce n&apos;est pas un engagement, juste un premier échange.
         </h1>
         <p style={{ fontSize: 16, lineHeight: 1.6, color: "var(--muted)", margin: "0 0 8px", maxWidth: 560 }}>
-          Le premier échange se fait en [visio ou téléphone, à compléter] et dure environ [durée à
-          compléter]. Il permet de clarifier votre situation et de voir, ensemble, si un accompagnement a du
-          sens.
+          Le premier échange se fait en visio ou téléphone et dure environ{" "}
+          <strong style={{ fontWeight: 600, color: "var(--primary)" }}>30 minutes</strong>. Il permet de
+          clarifier votre situation et de voir, ensemble, si un accompagnement a du sens. Comme
+          l&apos;ensemble de nos échanges, il reste{" "}
+          <strong style={{ fontWeight: 600, color: "var(--primary)" }}>strictement confidentiel</strong>,
+          que vous décidiez, par la suite, de vous engager dans un accompagnement ou non.
         </p>
       </section>
 

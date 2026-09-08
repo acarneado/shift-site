@@ -15,7 +15,7 @@ const TESTIMONIALS = [
   { text: "On apprend à accepter les regards, à s'en libérer pour avoir plus d'espace dédié à la création, à l'improvisation, au développement de sa pensée en direct.", name: "Mathias V." },
   { text: "J'arrive à plus me lâcher dans des contextes d'improvisation, et j'ai le goût d'y revenir !", name: "Rayan R." },
   { text: "J'ai cassé des barrières mentales que je m'étais créées. Ça m'a permis de prendre confiance en moi.", name: "Pauline P." },
-  { text: "J'ai amélioré ma capacité à prendre la parole en public, à me détacher de la peur du jugement.", name: "Pierre Lablache Combier" },
+  { text: "J'ai amélioré ma capacité à prendre la parole en public, à me détacher de la peur du jugement.", name: "Pierre L." },
   { text: "Ça m'a permis d'oser davantage, d'avoir moins peur du ridicule, de travailler mon imagination et mon improvisation.", name: "Christopher W." },
 ];
 
@@ -77,7 +77,7 @@ export default function AtelierTheatre() {
       <Header />
 
       <AtelierTheatreScene>
-        <section style={{ position: "relative", padding: "clamp(40px,6vw,72px) clamp(20px,20vw,220px) 16px", color: "oklch(0.92 0.01 60)", textAlign: "center" }}>
+        <section style={{ position: "relative", padding: "clamp(72px,10vw,120px) clamp(20px,20vw,220px) 16px", color: "oklch(0.92 0.01 60)", textAlign: "center" }}>
           <Link
             href="/accompagnements"
             style={{ display: "inline-block", fontSize: 13, color: "oklch(0.78 0.01 60)", borderBottom: "1px solid oklch(0.4 0.03 155)", margin: "0 0 20px" }}
@@ -185,14 +185,14 @@ export default function AtelierTheatre() {
           }}
         >
           <h2 style={{ fontFamily: "var(--font-lora), serif", fontWeight: 500, fontSize: "clamp(17px,1.6vw,20px)", margin: 0, maxWidth: 420 }}>
-            Vous souhaitez mobiliser votre équipe autrement&nbsp;?
+            Prêt à en discuter&nbsp;?
           </h2>
           <Link
             href="/rendez-vous"
             className="btn-on-dark"
             style={{ padding: "11px 22px", borderRadius: 999, fontSize: 14, fontWeight: 600, whiteSpace: "nowrap" }}
           >
-            Parlons-en
+            Prendre rendez-vous
           </Link>
         </div>
       </section>

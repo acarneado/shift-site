@@ -31,10 +31,11 @@ const TESTIMONIALS = [
   { text: "J'ai cassé des barrières mentales que je m'étais créées. Ça m'a permis de prendre confiance en moi.", name: "Pauline P." },
   { text: "On apprend à accepter les regards, à s'en libérer pour avoir plus d'espace dédié à la création, à l'improvisation, au développement de sa pensée en direct.", name: "Mathias V." },
   { text: "Un chouette moment, fun et libre, pour prendre la parole devant les autres. J'en suis ressorti plus serein dans ma façon de m'exprimer.", name: "Tristan" },
-  { text: "J'ai amélioré ma capacité à prendre la parole en public, à me détacher de la peur du jugement.", name: "Pierre Lablache Combier" },
+  { text: "J'ai amélioré ma capacité à prendre la parole en public, à me détacher de la peur du jugement.", name: "Pierre L." },
   { text: "J'arrive à plus me lâcher dans des contextes d'improvisation, et j'ai le goût d'y revenir !", name: "Rayan R." },
   { text: "Par le biais des exercices de théâtre animés par Alexandre, j'arrivais à me recentrer avec moi-même, évacuer le stress, canaliser mes émotions et mieux les communiquer.", name: "Une personne accompagnée en atelier expérientiel / théâtre" },
   { text: "Ça m'a permis d'oser davantage, d'avoir moins peur du ridicule, de travailler mon imagination et mon improvisation.", name: "Christopher W." },
+  { text: "J'ai vraiment compris la force des petites actions et des « petits pas » pour m'amener vers un objectif.", name: "Camille P." },
 ];
 const ARTICLES = [
   { title: "Changer de poste sans perdre pied", tag: "Transition", time: "6 min" },
@@ -226,7 +227,7 @@ export default function Home() {
 
         <section
           style={{
-            padding: "64px clamp(20px,6vw,64px) 72px",
+            padding: "44px clamp(20px,6vw,64px) 44px",
             position: "relative",
             zIndex: 1,
             textAlign: "center",
@@ -247,7 +248,7 @@ export default function Home() {
                 height: 88,
                 borderRadius: "50%",
                 overflow: "hidden",
-                margin: "0 0 24px",
+                margin: "0 0 18px",
               }}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -278,7 +279,7 @@ export default function Home() {
                 fontSize: "clamp(19px,2.3vw,24px)",
                 lineHeight: 1.5,
                 color: "var(--text)",
-                margin: "0 0 32px",
+                margin: "0 0 24px",
                 textWrap: "balance",
               }}
             >
@@ -413,7 +414,6 @@ export default function Home() {
             gap: 20,
             alignItems: "center",
             justifyContent: "space-between",
-            borderTop: "1px solid var(--border)",
             position: "relative",
             zIndex: 1,
           }}
@@ -426,7 +426,7 @@ export default function Home() {
             className="btn-pill-outline"
             style={{ padding: "11px 22px", borderRadius: 999, fontSize: 14, fontWeight: 600, whiteSpace: "nowrap" }}
           >
-            Échanger sur ma situation
+            Prendre rendez-vous
           </Link>
         </section>
       </HeroTrace>

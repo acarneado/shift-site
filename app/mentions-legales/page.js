@@ -40,7 +40,7 @@ export default function MentionsLegales() {
             SHIFT
           </span>
           <span style={{ fontFamily: "var(--font-ibm-plex-sans), sans-serif", fontWeight: 500, fontSize: 11, letterSpacing: "0.3px", color: "var(--muted)" }}>
-            Alexandre Carneado — Coach professionnel RNCP 6
+            Alexandre Carneado — Coach professionnel certifié RNCP 6
           </span>
         </Link>
         <Link

@@ -74,7 +74,7 @@ export default function Header() {
             color: "var(--muted)",
           }}
         >
-          Alexandre Carneado — Coach professionnel RNCP 6
+          Alexandre Carneado — Coach professionnel certifié RNCP 6
         </span>
       </Link>
 
