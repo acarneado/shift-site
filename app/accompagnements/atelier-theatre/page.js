@@ -2,6 +2,7 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import AtelierTheatreScene from "@/components/AtelierTheatreScene";
+import TestimonialCarousel from "@/components/TestimonialCarousel";
 
 export const metadata = {
   title: "Atelier théâtre en entreprise — SHIFT",
@@ -17,7 +18,6 @@ const TESTIMONIALS = [
   { text: "J'ai amélioré ma capacité à prendre la parole en public, à me détacher de la peur du jugement.", name: "Pierre Lablache Combier" },
   { text: "Ça m'a permis d'oser davantage, d'avoir moins peur du ridicule, de travailler mon imagination et mon improvisation.", name: "Christopher W." },
 ];
-const TESTIMONIALS_LOOP = TESTIMONIALS.concat(TESTIMONIALS);
 
 const CE_QUIL_FAUT_SAVOIR = [
   {
@@ -201,21 +201,7 @@ export default function AtelierTheatre() {
         <p style={{ fontSize: 13, letterSpacing: "1.5px", textTransform: "uppercase", color: "var(--muted)", margin: "0 0 20px" }}>
           Témoignages
         </p>
-        <div style={{ overflow: "hidden" }}>
-          <div className="carousel-track" style={{ display: "flex", gap: 20, width: "max-content" }}>
-            {TESTIMONIALS_LOOP.map((t, i) => (
-              <div key={i} style={{ background: "var(--card)", border: "1px solid oklch(0.62 0.10 40 / 0.3)", borderRadius: 18, padding: 24, width: 300, flexShrink: 0 }}>
-                <span style={{ fontFamily: "var(--font-lora), serif", fontSize: 28, lineHeight: 1, color: "var(--accent)", display: "block", margin: "0 0 8px" }}>
-                  &quot;
-                </span>
-                <p style={{ fontFamily: "var(--font-lora), serif", fontStyle: "italic", fontSize: 15, lineHeight: 1.6, color: "oklch(0.32 0.015 50)", margin: "0 0 20px" }}>
-                  {t.text}
-                </p>
-                <p style={{ fontSize: 13, color: "var(--muted-2)", margin: 0 }}>{t.name}</p>
-              </div>
-            ))}
-          </div>
-        </div>
+        <TestimonialCarousel testimonials={TESTIMONIALS} />
       </section>
 
       <Footer />

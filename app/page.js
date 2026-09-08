@@ -2,6 +2,11 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import HeroTrace from "@/components/HeroTrace";
+import TestimonialCarousel from "@/components/TestimonialCarousel";
+
+// Aperçu "Ressources" masqué tant qu'il n'y a qu'un seul article réel —
+// code conservé pour le réactiver dès que le contenu le justifie.
+const SHOW_RESOURCES_TEASER = false;
 
 const OFFERINGS = [
   {
@@ -31,8 +36,6 @@ const TESTIMONIALS = [
   { text: "Par le biais des exercices de théâtre animés par Alexandre, j'arrivais à me recentrer avec moi-même, évacuer le stress, canaliser mes émotions et mieux les communiquer.", name: "Une personne accompagnée en atelier expérientiel / théâtre" },
   { text: "Ça m'a permis d'oser davantage, d'avoir moins peur du ridicule, de travailler mon imagination et mon improvisation.", name: "Christopher W." },
 ];
-const TESTIMONIALS_LOOP = TESTIMONIALS.concat(TESTIMONIALS);
-
 const ARTICLES = [
   { title: "Changer de poste sans perdre pied", tag: "Transition", time: "6 min" },
   { title: "Pourquoi le syndrome de l'imposteur revient à chaque nouveau rôle", tag: "Légitimité", time: "5 min" },
@@ -314,136 +317,93 @@ export default function Home() {
           >
             Témoignages
           </p>
-          <div style={{ overflow: "hidden" }}>
-            <div
-              className="carousel-track"
-              style={{ display: "flex", gap: 20, width: "max-content" }}
+          <TestimonialCarousel testimonials={TESTIMONIALS} />
+        </section>
+
+        {SHOW_RESOURCES_TEASER && (
+          <section style={{ padding: "64px clamp(20px,6vw,64px) 24px", position: "relative", zIndex: 1 }}>
+            <p
+              style={{
+                fontSize: 13,
+                letterSpacing: "1.5px",
+                textTransform: "uppercase",
+                color: "var(--muted)",
+                margin: "0 0 20px",
+              }}
             >
-              {TESTIMONIALS_LOOP.map((t, i) => (
-                <div
-                  key={i}
-                  style={{
-                    background: "var(--card)",
-                    border: "1px solid oklch(0.62 0.10 40 / 0.3)",
-                    borderRadius: 18,
-                    padding: 24,
-                    width: 300,
-                    flexShrink: 0,
-                  }}
+              Ressources
+            </p>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))",
+                gap: 24,
+              }}
+            >
+              {ARTICLES.map((a) => (
+                <Link
+                  key={a.title}
+                  href="/ressources"
+                  className="link-fade"
+                  style={{ display: "block" }}
                 >
-                  <span
+                  <div
                     style={{
-                      fontFamily: "var(--font-lora), serif",
-                      fontSize: 28,
-                      lineHeight: 1,
-                      color: "var(--accent)",
-                      display: "block",
+                      height: 160,
+                      background:
+                        "repeating-linear-gradient(135deg, oklch(0.9 0.01 55) 0px, oklch(0.9 0.01 55) 10px, oklch(0.94 0.01 55) 10px, oklch(0.94 0.01 55) 20px)",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      marginBottom: 16,
+                      borderRadius: 16,
+                    }}
+                  >
+                    <span style={{ fontFamily: "monospace", fontSize: 11, color: "var(--muted)" }}>
+                      visuel article
+                    </span>
+                  </div>
+                  <p
+                    style={{
+                      fontSize: 12,
+                      letterSpacing: "1px",
+                      textTransform: "uppercase",
+                      color: "var(--accent-tag)",
                       margin: "0 0 8px",
                     }}
                   >
-                    &quot;
-                  </span>
-                  <p
+                    {a.tag} · {a.time}
+                  </p>
+                  <h3
                     style={{
                       fontFamily: "var(--font-lora), serif",
-                      fontStyle: "italic",
-                      fontSize: 15,
-                      lineHeight: 1.6,
-                      color: "oklch(0.32 0.015 50)",
-                      margin: "0 0 20px",
+                      fontWeight: 500,
+                      fontSize: 19,
+                      margin: 0,
+                      lineHeight: 1.35,
+                      color: "var(--text)",
                     }}
                   >
-                    {t.text}
-                  </p>
-                  <p style={{ fontSize: 13, color: "var(--muted-2)", margin: 0 }}>{t.name}</p>
-                </div>
+                    {a.title}
+                  </h3>
+                </Link>
               ))}
             </div>
-          </div>
-        </section>
-
-        <section style={{ padding: "64px clamp(20px,6vw,64px) 24px", position: "relative", zIndex: 1 }}>
-          <p
-            style={{
-              fontSize: 13,
-              letterSpacing: "1.5px",
-              textTransform: "uppercase",
-              color: "var(--muted)",
-              margin: "0 0 20px",
-            }}
-          >
-            Ressources
-          </p>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))",
-              gap: 24,
-            }}
-          >
-            {ARTICLES.map((a) => (
-              <Link
-                key={a.title}
-                href="/ressources"
-                className="link-fade"
-                style={{ display: "block" }}
-              >
-                <div
-                  style={{
-                    height: 160,
-                    background:
-                      "repeating-linear-gradient(135deg, oklch(0.9 0.01 55) 0px, oklch(0.9 0.01 55) 10px, oklch(0.94 0.01 55) 10px, oklch(0.94 0.01 55) 20px)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    marginBottom: 16,
-                    borderRadius: 16,
-                  }}
-                >
-                  <span style={{ fontFamily: "monospace", fontSize: 11, color: "var(--muted)" }}>
-                    visuel article
-                  </span>
-                </div>
-                <p
-                  style={{
-                    fontSize: 12,
-                    letterSpacing: "1px",
-                    textTransform: "uppercase",
-                    color: "var(--accent-tag)",
-                    margin: "0 0 8px",
-                  }}
-                >
-                  {a.tag} · {a.time}
-                </p>
-                <h3
-                  style={{
-                    fontFamily: "var(--font-lora), serif",
-                    fontWeight: 500,
-                    fontSize: 19,
-                    margin: 0,
-                    lineHeight: 1.35,
-                    color: "var(--text)",
-                  }}
-                >
-                  {a.title}
-                </h3>
-              </Link>
-            ))}
-          </div>
-          <Link
-            href="/ressources"
-            style={{
-              display: "inline-block",
-              marginTop: 24,
-              fontSize: 14,
-              fontWeight: 600,
-              color: "var(--primary)",
-              borderBottom: "1px solid var(--primary)",
-            }}
-          >
-            Voir toutes les ressources →
-          </Link>
-        </section>
+            <Link
+              href="/ressources"
+              style={{
+                display: "inline-block",
+                marginTop: 24,
+                fontSize: 14,
+                fontWeight: 600,
+                color: "var(--primary)",
+                borderBottom: "1px solid var(--primary)",
+              }}
+            >
+              Voir toutes les ressources →
+            </Link>
+          </section>
+        )}
 
         <section
           style={{

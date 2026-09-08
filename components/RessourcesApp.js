@@ -13,7 +13,17 @@ const TAG_LABELS = [
 ];
 
 const ARTICLE_TAG = "Manager-coach";
-const ARTICLE_TITLE = "le théâtre en entreprise, un outil au service de la posture managériale";
+const ARTICLE_TITLE = "le théâtre, déjà un outil de transformation professionnelle";
+
+// Cartes "à venir" retirées tant qu'aucun autre article n'est prêt — tableau
+// gardé (plutôt que le JSX supprimé) pour pouvoir en ajouter dès que possible.
+const PLACEHOLDERS = [];
+
+// Recherche et filtres masqués tant que le nombre d'articles reste faible.
+// Remettre à true dès que le contenu le justifie — la logique de filtrage
+// ci-dessous reste fonctionnelle, elle est juste inutilisée pendant que
+// showArticle vaut toujours true (aucun input ne peut la faire varier).
+const SHOW_FILTERS = false;
 
 export default function RessourcesApp() {
   const [search, setSearch] = useState("");
@@ -48,80 +58,110 @@ export default function RessourcesApp() {
         <h1 style={{ fontFamily: "var(--font-lora), serif", fontWeight: 500, fontSize: "clamp(30px,4.5vw,46px)", lineHeight: 1.2, margin: "0 0 32px", maxWidth: 700 }}>
           Articles
         </h1>
-        <input
-          type="text"
-          placeholder="Rechercher un article"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          style={{
-            width: "100%",
-            maxWidth: 420,
-            padding: "12px 18px",
-            borderRadius: 999,
-            border: "1px solid var(--border)",
-            background: "var(--bg)",
-            fontSize: 15,
-            fontFamily: "var(--font-ibm-plex-sans), sans-serif",
-            color: "var(--text)",
-            marginBottom: 20,
-            display: "block",
-          }}
-        />
-        <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
-          {tags.map((t) => (
-            <button
-              key={t.label}
-              onClick={t.toggle}
+        {SHOW_FILTERS && (
+          <>
+            <input
+              type="text"
+              placeholder="Rechercher un article"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
               style={{
+                width: "100%",
+                maxWidth: 420,
+                padding: "12px 18px",
                 borderRadius: 999,
-                padding: "8px 16px",
-                fontSize: 13,
+                border: "1px solid var(--border)",
+                background: "var(--bg)",
+                fontSize: 15,
                 fontFamily: "var(--font-ibm-plex-sans), sans-serif",
-                cursor: "pointer",
-                border: `1px solid ${t.borderColor}`,
-                background: t.bg,
-                color: t.color,
+                color: "var(--text)",
+                marginBottom: 20,
+                display: "block",
               }}
-            >
-              {t.label}
-            </button>
-          ))}
-        </div>
+            />
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
+              {tags.map((t) => (
+                <button
+                  key={t.label}
+                  onClick={t.toggle}
+                  style={{
+                    borderRadius: 999,
+                    padding: "8px 16px",
+                    fontSize: 13,
+                    fontFamily: "var(--font-ibm-plex-sans), sans-serif",
+                    cursor: "pointer",
+                    border: `1px solid ${t.borderColor}`,
+                    background: t.bg,
+                    color: t.color,
+                  }}
+                >
+                  {t.label}
+                </button>
+              ))}
+            </div>
+          </>
+        )}
       </section>
 
       <section style={{ padding: "8px clamp(20px,6vw,64px) 96px" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: 24 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(280px,360px))", justifyContent: "start", gap: 24 }}>
           {showArticle && (
-            <a href="/ressources" className="link-fade-85" style={{ display: "block" }}>
+            <a
+              href="https://www.wefiit.com/blog/we-act"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-fade-85"
+              style={{ display: "block" }}
+            >
               <div
                 style={{
                   height: 170,
                   borderRadius: 16,
-                  border: "1px solid var(--border)",
-                  background:
-                    "repeating-linear-gradient(135deg, oklch(0.9 0.01 55) 0px, oklch(0.9 0.01 55) 10px, oklch(0.94 0.01 55) 10px, oklch(0.94 0.01 55) 20px)",
+                  background: "linear-gradient(150deg, var(--accent), oklch(0.72 0.08 45))",
                   display: "flex",
+                  flexDirection: "column",
                   alignItems: "center",
                   justifyContent: "center",
+                  gap: 6,
                   marginBottom: 16,
                 }}
               >
-                <span style={{ fontFamily: "monospace", fontSize: 11, color: "var(--muted)" }}>visuel article</span>
+                <span
+                  style={{
+                    fontFamily: "var(--font-lora), serif",
+                    fontWeight: 500,
+                    fontSize: "clamp(28px,4vw,40px)",
+                    lineHeight: 1,
+                    color: "oklch(0.99 0.005 60)",
+                  }}
+                >
+                  We.Act
+                </span>
+                <span style={{ fontSize: 12, letterSpacing: "1.2px", textTransform: "uppercase", color: "var(--primary)" }}>
+                  Atelier théâtre
+                </span>
               </div>
               <p style={{ fontSize: 12, letterSpacing: "1px", textTransform: "uppercase", color: "var(--accent-tag)", margin: "0 0 8px" }}>
-                Manager-coach · [à compléter] min · [date à compléter]
+                Avant SHIFT
               </p>
               <h3 style={{ fontFamily: "var(--font-lora), serif", fontWeight: 500, fontSize: 19, margin: "0 0 8px", lineHeight: 1.35, color: "var(--text)" }}>
-                Le théâtre en entreprise, un outil au service de la posture managériale
+                Le théâtre, déjà un outil de transformation professionnelle
               </h3>
-              <p style={{ fontSize: 14, lineHeight: 1.5, color: "var(--muted)", margin: 0 }}>
-                Comment sortir de ses automatismes managériaux passe aussi par le corps et la posture, pas
-                seulement par la méthode.
+              <p style={{ fontSize: 14, lineHeight: 1.5, color: "var(--muted)", margin: "0 0 10px" }}>
+                Avant de devenir coach, j&apos;ai lancé un atelier théâtre mensuel dans l&apos;entreprise où
+                j&apos;étais Product Manager. Un premier terrain d&apos;expérimentation de ce que SHIFT est
+                devenu.
+              </p>
+              <span style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 14, fontWeight: 600, color: "var(--primary)" }}>
+                Lire l&apos;article →
+              </span>
+              <p style={{ fontSize: 12.5, lineHeight: 1.4, color: "var(--muted-2)", margin: "10px 0 0" }}>
+                Article publié sur le blog WeFiiT
               </p>
             </a>
           )}
 
-          {[1, 2, 3].map((p) => (
+          {PLACEHOLDERS.map((p) => (
             <div key={p} style={{ display: "block", opacity: 0.6 }}>
               <div
                 style={{
