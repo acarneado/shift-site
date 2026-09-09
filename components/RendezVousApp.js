@@ -248,7 +248,9 @@ export default function RendezVousApp() {
           </div>
 
           {submitError && (
-            <p style={{ fontSize: 14, color: "oklch(0.55 0.18 30)", margin: 0 }}>{submitError}</p>
+            <p role="alert" style={{ fontSize: 14, color: "oklch(0.55 0.18 30)", margin: 0 }}>
+              {submitError}
+            </p>
           )}
 
           <button
@@ -271,7 +273,10 @@ export default function RendezVousApp() {
           </button>
         </form>
       ) : (
-        <div style={{ maxWidth: 560, background: "var(--card)", border: "1px solid var(--border)", borderRadius: 20, padding: 36 }}>
+        <div
+          role="status"
+          style={{ maxWidth: 560, background: "var(--card)", border: "1px solid var(--border)", borderRadius: 20, padding: 36 }}
+        >
           <p style={{ fontFamily: "var(--font-lora), serif", fontSize: 20, margin: "0 0 12px", color: "var(--primary)" }}>
             Message envoyé.
           </p>
