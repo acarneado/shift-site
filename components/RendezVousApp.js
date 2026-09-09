@@ -4,6 +4,15 @@ import { useEffect, useState } from "react";
 
 const PROFILE_OPTIONS = ["Vous êtes salarié", "Vous représentez une entreprise"];
 const INTEREST_OPTIONS = ["Coaching individuel", "Formations", "Atelier théâtre"];
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+function validate({ name, email, message }) {
+  const errors = {};
+  if (!name.trim()) errors.name = "Merci d'indiquer votre nom.";
+  if (!EMAIL_RE.test(email.trim())) errors.email = "Adresse email invalide.";
+  if (message.trim().length < 10) errors.message = "Quelques mots de plus nous aideraient (10 caractères minimum).";
+  return errors;
+}
 
 export default function RendezVousApp() {
   const [name, setName] = useState("");
@@ -11,6 +20,10 @@ export default function RendezVousApp() {
   const [message, setMessage] = useState("");
   const [profile, setProfile] = useState(null);
   const [interest, setInterest] = useState(null);
+  const [website, setWebsite] = useState(""); // honeypot — left empty by real visitors
+  const [errors, setErrors] = useState({});
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
@@ -59,48 +72,87 @@ export default function RendezVousApp() {
     };
   });
 
-  const inputStyle = {
+  const inputStyle = (hasError) => ({
     width: "100%",
     padding: "13px 16px",
     borderRadius: 12,
-    border: "1px solid var(--border)",
+    border: `1px solid ${hasError ? "oklch(0.55 0.18 30)" : "var(--border)"}`,
     background: "var(--bg)",
     fontSize: 15,
     fontFamily: "var(--font-ibm-plex-sans), sans-serif",
     color: "var(--text)",
+  });
+
+  const errorTextStyle = { fontSize: 13, color: "oklch(0.55 0.18 30)", margin: "6px 0 0" };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const fieldErrors = validate({ name, email, message });
+    setErrors(fieldErrors);
+    setSubmitError("");
+    if (Object.keys(fieldErrors).length > 0) return;
+
+    setSubmitting(true);
+    try {
+      const res = await fetch("/api/rendez-vous", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, message, profile, interest, website }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        if (data.errors) setErrors(data.errors);
+        setSubmitError(data.error || "L'envoi a échoué. Réessayez plus tard.");
+        return;
+      }
+      setSubmitted(true);
+    } catch {
+      setSubmitError("L'envoi a échoué. Vérifiez votre connexion et réessayez.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
     <section style={{ padding: "16px clamp(20px,6vw,64px) 96px" }}>
       {!submitted ? (
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            setSubmitted(true);
-          }}
-          style={{ maxWidth: 560, display: "flex", flexDirection: "column", gap: 20 }}
-        >
+        <form onSubmit={handleSubmit} style={{ maxWidth: 560, display: "flex", flexDirection: "column", gap: 20 }} noValidate>
+          {/* Honeypot: hidden from sighted users and screen readers; bots fill every field. */}
+          <div style={{ position: "absolute", left: "-9999px", width: 1, height: 1, overflow: "hidden" }} aria-hidden="true">
+            <label htmlFor="website">Ne pas remplir</label>
+            <input
+              id="website"
+              type="text"
+              tabIndex={-1}
+              autoComplete="off"
+              value={website}
+              onChange={(e) => setWebsite(e.target.value)}
+            />
+          </div>
+
           <div>
             <label style={{ display: "block", fontSize: 13, color: "var(--muted)", margin: "0 0 6px" }}>Nom</label>
             <input
               type="text"
-              required
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="Votre nom"
-              style={inputStyle}
+              style={inputStyle(!!errors.name)}
+              aria-invalid={!!errors.name}
             />
+            {errors.name && <p style={errorTextStyle}>{errors.name}</p>}
           </div>
           <div>
             <label style={{ display: "block", fontSize: 13, color: "var(--muted)", margin: "0 0 6px" }}>Email</label>
             <input
               type="email"
-              required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="vous@exemple.com"
-              style={inputStyle}
+              style={inputStyle(!!errors.email)}
+              aria-invalid={!!errors.email}
             />
+            {errors.email && <p style={errorTextStyle}>{errors.email}</p>}
           </div>
           <div>
             <label style={{ display: "block", fontSize: 13, color: "var(--muted)", margin: "0 0 6px" }}>
@@ -159,16 +211,23 @@ export default function RendezVousApp() {
           <div>
             <label style={{ display: "block", fontSize: 13, color: "var(--muted)", margin: "0 0 6px" }}>Message</label>
             <textarea
-              required
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               placeholder="Quelques mots sur votre situation"
               rows={4}
-              style={{ ...inputStyle, resize: "vertical" }}
+              style={{ ...inputStyle(!!errors.message), resize: "vertical" }}
+              aria-invalid={!!errors.message}
             ></textarea>
+            {errors.message && <p style={errorTextStyle}>{errors.message}</p>}
           </div>
+
+          {submitError && (
+            <p style={{ fontSize: 14, color: "oklch(0.55 0.18 30)", margin: 0 }}>{submitError}</p>
+          )}
+
           <button
             type="submit"
+            disabled={submitting}
             className="btn-pill-primary"
             style={{
               alignSelf: "flex-start",
@@ -177,11 +236,12 @@ export default function RendezVousApp() {
               fontSize: 15,
               fontWeight: 600,
               border: "none",
-              cursor: "pointer",
+              cursor: submitting ? "default" : "pointer",
               fontFamily: "var(--font-ibm-plex-sans), sans-serif",
+              opacity: submitting ? 0.7 : 1,
             }}
           >
-            Envoyer
+            {submitting ? "Envoi..." : "Envoyer"}
           </button>
         </form>
       ) : (
