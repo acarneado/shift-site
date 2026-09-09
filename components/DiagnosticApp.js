@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const THEME_CARDS = [
   { id: "role", label: "Un nouveau rôle à apprivoiser" },
@@ -132,6 +132,21 @@ const initialState = {
 export default function DiagnosticApp() {
   const [state, setState] = useState(initialState);
   const s = state.screen;
+
+  // Un lecteur d'écran ou un utilisateur clavier n'est pas averti qu'une
+  // nouvelle question est apparue : le focus reste sur le bouton "Continuer"
+  // précédent, qui n'existe plus. On déplace le focus vers le contenu de
+  // l'étape à chaque changement d'écran (hors montage initial, pour ne pas
+  // voler le focus au chargement de la page).
+  const stepRef = useRef(null);
+  const isFirstRender = useRef(true);
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    stepRef.current?.focus();
+  }, [s]);
 
   const goTo = (screen) => {
     setState((prev) => ({ ...prev, screen, history: [...prev.history, prev.screen] }));
@@ -277,7 +292,7 @@ export default function DiagnosticApp() {
           )}
 
           {s === "intro" && (
-            <div className="dq-step">
+            <div className="dq-step" ref={stepRef} tabIndex={-1}>
               <p style={{ fontSize: 13, letterSpacing: "1.5px", textTransform: "uppercase", color: "var(--primary)", margin: "0 0 20px" }}>
                 Votre situation
               </p>
@@ -298,7 +313,7 @@ export default function DiagnosticApp() {
           )}
 
           {s === "theme" && (
-            <div className="dq-step">
+            <div className="dq-step" ref={stepRef} tabIndex={-1}>
               <h2 style={{ fontFamily: "var(--font-lora), serif", fontWeight: 500, fontSize: "clamp(23px,3vw,28px)", lineHeight: 1.35, margin: "0 0 28px" }}>
                 Dans quelle situation vous trouvez-vous ?
               </h2>
@@ -331,7 +346,7 @@ export default function DiagnosticApp() {
           )}
 
           {s === "themeFree" && (
-            <div className="dq-step">
+            <div className="dq-step" ref={stepRef} tabIndex={-1}>
               <h2
                 id="dq-themeFree-question"
                 style={{ fontFamily: "var(--font-lora), serif", fontWeight: 500, fontSize: "clamp(23px,3vw,28px)", lineHeight: 1.35, margin: "0 0 20px" }}
@@ -368,7 +383,7 @@ export default function DiagnosticApp() {
           )}
 
           {s === "vecu" && (
-            <div className="dq-step">
+            <div className="dq-step" ref={stepRef} tabIndex={-1}>
               <h2 style={{ fontFamily: "var(--font-lora), serif", fontWeight: 500, fontSize: "clamp(23px,3vw,28px)", lineHeight: 1.35, margin: "0 0 24px" }}>
                 Parmi ces phrases, lesquelles vous parlent ?
               </h2>
@@ -442,7 +457,7 @@ export default function DiagnosticApp() {
           )}
 
           {s === "vecuFree" && (
-            <div className="dq-step">
+            <div className="dq-step" ref={stepRef} tabIndex={-1}>
               <h2
                 id="dq-vecuFree-question"
                 style={{ fontFamily: "var(--font-lora), serif", fontWeight: 500, fontSize: "clamp(23px,3vw,28px)", lineHeight: 1.35, margin: "0 0 20px" }}
@@ -479,7 +494,7 @@ export default function DiagnosticApp() {
           )}
 
           {s === "severity" && (
-            <div className="dq-step">
+            <div className="dq-step" ref={stepRef} tabIndex={-1}>
               <h2
                 id="dq-severity-question"
                 style={{ fontFamily: "var(--font-lora), serif", fontWeight: 500, fontSize: "clamp(23px,3vw,28px)", lineHeight: 1.35, margin: "0 0 40px" }}
@@ -511,7 +526,7 @@ export default function DiagnosticApp() {
           )}
 
           {s === "motivation" && (
-            <div className="dq-step">
+            <div className="dq-step" ref={stepRef} tabIndex={-1}>
               <h2
                 id="dq-motivation-question"
                 style={{ fontFamily: "var(--font-lora), serif", fontWeight: 500, fontSize: "clamp(23px,3vw,28px)", lineHeight: 1.35, margin: "0 0 40px" }}
@@ -543,7 +558,7 @@ export default function DiagnosticApp() {
           )}
 
           {s === "capacity" && (
-            <div className="dq-step">
+            <div className="dq-step" ref={stepRef} tabIndex={-1}>
               <h2 style={{ fontFamily: "var(--font-lora), serif", fontWeight: 500, fontSize: "clamp(23px,3vw,28px)", lineHeight: 1.35, margin: "0 0 32px" }}>
                 Avez-vous le sentiment d&apos;avoir, aujourd&apos;hui, toutes les ressources ou capacités pour
                 faire évoluer cela par vous-même ?
@@ -572,7 +587,7 @@ export default function DiagnosticApp() {
           )}
 
           {s === "result" && (
-            <div className="dq-step">
+            <div className="dq-step" ref={stepRef} tabIndex={-1}>
               <p style={{ fontSize: 13, letterSpacing: "1.5px", textTransform: "uppercase", color: "var(--muted)", margin: "0 0 16px" }}>
                 Synthèse du diagnostic
               </p>
