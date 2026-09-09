@@ -11,7 +11,7 @@ Auteur : Claude (session Claude Code), à la demande d'Alexandre Carneado.
 
 ## Synthèse
 
-Base technique saine : chaque page a un H1 unique, un `title`/`description` propres et différenciés, des URLs propres, un site responsive. Le principal trou identifié était l'**absence totale d'infrastructure d'indexation** (pas de sitemap, pas de robots.txt, pas de partage social) et une **image non optimisée**. Second point structurant : le site vit encore sur un sous-domaine Vercel, à migrer avant toute action de référencement actif.
+Base technique saine : chaque page a un H1 unique, un `title`/`description` propres et différenciés, des URLs propres, un site responsive. Le principal trou identifié était l'**absence totale d'infrastructure d'indexation** (pas de sitemap, pas de robots.txt, pas de partage social) et une **image non optimisée** — tous deux corrigés depuis. Le domaine dédié (`alexandrecarneado.com`) est acquis et branché côté code ; il reste à le rattacher sur Vercel pour qu'il serve réellement le site.
 
 ## Constats par sévérité
 
@@ -24,7 +24,7 @@ Base technique saine : chaque page a un H1 unique, un `title`/`description` prop
    → **Corrigé le 09/09/2026** : `metadataBase`, `openGraph` et `twitter` (summary_large_image) ajoutés dans `app/layout.js` et surchargés dans chaque `page.js`. Titre/description restent volontairement identiques partout ; seule l'image change par page (`public/images/og/<slug>.jpg`, 9 rendus 1200×630, générés depuis `scripts/og-image.html` par `scripts/generate-og-images.js`), avec une étiquette de section (« Diagnostic », « Coaching individuel »...) pour donner un repère visuel sur la provenance du lien partagé.
 
 3. **Site en production sur `shift-site-kappa.vercel.app`, pas de domaine dédié** (fait observé, déjà signalé dans les mentions légales comme `[À COMPLÉTER]`). Un sous-domaine générique inspire moins confiance et toute indexation démarrée ici devra être migrée (redirections 301) vers le futur domaine.
-   → **Non traité** — dépend d'une action côté éditeur (achat de domaine).
+   → **Corrigé côté code le 09/09/2026** : domaine `alexandrecarneado.com` acquis par l'éditeur ; `SITE_URL` (donc `sitemap.xml`, `robots.txt`, `metadataBase`, Open Graph) et les mentions légales §4 mis à jour en conséquence. **Reste à faire côté Vercel** : rattacher le domaine au projet et configurer les DNS chez le registrar — sans quoi le domaine ne sert pas encore le site.
 
 ### Important
 
@@ -47,7 +47,7 @@ Base technique saine : chaque page a un H1 unique, un `title`/`description` prop
 
 ## Priorités identifiées (ordre recommandé)
 
-1. Domaine dédié — condition préalable à toute action SEO sérieuse.
+1. ~~Domaine dédié~~ — **acheté et branché côté code** ; reste à rattacher sur Vercel (DNS).
 2. ~~`sitemap.xml` + `robots.txt`~~ — **fait**.
 3. Open Graph / partage social — impact rapide sur la crédibilité perçue.
 4. ~~Migration de la photo vers `next/image`~~ — **fait**.
@@ -60,6 +60,7 @@ Base technique saine : chaque page a un H1 unique, un `title`/`description` prop
 | `sitemap.xml` + `robots.txt` | ✅ Fait | 09/09/2026 |
 | Migration photo → `next/image` | ✅ Fait | 09/09/2026 |
 | Open Graph / Twitter Card / `metadataBase` | ✅ Fait | 09/09/2026 |
-| Domaine dédié | ⬜ À faire (dépend de l'achat du domaine) | — |
+| Domaine dédié (code) | ✅ Fait — `alexandrecarneado.com` | 09/09/2026 |
+| Domaine dédié (DNS + Vercel) | ⬜ À faire côté éditeur | — |
 | JSON-LD `Person` | ⬜ À faire | — |
 | Balise canonical | ⬜ À faire | — |

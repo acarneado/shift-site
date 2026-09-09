@@ -130,7 +130,10 @@ export default function MentionsLegales() {
 
         <h2 style={sectionTitleStyle}>4. Nom de domaine</h2>
         <p style={pStyle}>
-          Le présent site est accessible à l&apos;adresse : [À COMPLÉTER — nom de domaine définitif]
+          Le présent site est accessible à l&apos;adresse :{" "}
+          <a href="https://alexandrecarneado.com" style={{ color: "var(--primary)", borderBottom: "1px solid var(--primary)" }}>
+            alexandrecarneado.com
+          </a>
         </p>
 
         <h2 style={sectionTitleStyle}>5. Propriété intellectuelle</h2>
@@ -226,6 +229,11 @@ export default function MentionsLegales() {
             la demande de l&apos;éditeur pour préserver la confidentialité du domicile personnel. Décision
             revue par l&apos;éditeur — le point de non-conformité LCEN précédemment signalé ici est donc
             levé.
+          </li>
+          <li>
+            <strong style={{ color: "var(--text)", fontWeight: 600 }}>09/09/2026</strong> : nom de domaine
+            définitif renseigné (section 4) suite à l&apos;acquisition d&apos;alexandrecarneado.com — le
+            point &quot;à compléter&quot; précédemment signalé ici est donc levé.
           </li>
         </ul>
 
