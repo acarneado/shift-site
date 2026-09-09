@@ -1,11 +1,23 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import RendezVousApp from "@/components/RendezVousApp";
+import { SHARE_TITLE, SHARE_DESCRIPTION, ogImage } from "@/lib/site";
 
 export const metadata = {
   title: "Prendre rendez-vous — SHIFT",
   description:
     "Ce n'est pas un engagement, juste un premier échange. Contactez Alexandre Carneado pour clarifier votre situation.",
+  openGraph: {
+    title: SHARE_TITLE,
+    description: SHARE_DESCRIPTION,
+    images: ogImage("/images/og/rendez-vous.jpg"),
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SHARE_TITLE,
+    description: SHARE_DESCRIPTION,
+    images: ["/images/og/rendez-vous.jpg"],
+  },
 };
 
 export default function RendezVous() {

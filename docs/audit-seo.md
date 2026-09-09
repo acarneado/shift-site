@@ -21,7 +21,7 @@ Base technique saine : chaque page a un H1 unique, un `title`/`description` prop
    → **Corrigé le 09/09/2026** : `app/sitemap.js` et `app/robots.js` ajoutés (génération native Next.js), servis sur `/sitemap.xml` et `/robots.txt`.
 
 2. **Aucune métadonnée Open Graph / Twitter Card, pas de `metadataBase`** (fait observé). Un lien SHIFT partagé sur LinkedIn n'affiche aucun aperçu (image, titre) — nuit au CTR de partage.
-   → **Non traité** dans ce lot. Reste à faire.
+   → **Corrigé le 09/09/2026** : `metadataBase`, `openGraph` et `twitter` (summary_large_image) ajoutés dans `app/layout.js` et surchargés dans chaque `page.js`. Titre/description restent volontairement identiques partout ; seule l'image change par page (`public/images/og/<slug>.jpg`, 9 rendus 1200×630, générés depuis `scripts/og-image.html` par `scripts/generate-og-images.js`), avec une étiquette de section (« Diagnostic », « Coaching individuel »...) pour donner un repère visuel sur la provenance du lien partagé.
 
 3. **Site en production sur `shift-site-kappa.vercel.app`, pas de domaine dédié** (fait observé, déjà signalé dans les mentions légales comme `[À COMPLÉTER]`). Un sous-domaine générique inspire moins confiance et toute indexation démarrée ici devra être migrée (redirections 301) vers le futur domaine.
    → **Non traité** — dépend d'une action côté éditeur (achat de domaine).
@@ -59,7 +59,7 @@ Base technique saine : chaque page a un H1 unique, un `title`/`description` prop
 |---|---|---|
 | `sitemap.xml` + `robots.txt` | ✅ Fait | 09/09/2026 |
 | Migration photo → `next/image` | ✅ Fait | 09/09/2026 |
-| Open Graph / Twitter Card / `metadataBase` | ⬜ À faire | — |
+| Open Graph / Twitter Card / `metadataBase` | ✅ Fait | 09/09/2026 |
 | Domaine dédié | ⬜ À faire (dépend de l'achat du domaine) | — |
 | JSON-LD `Person` | ⬜ À faire | — |
 | Balise canonical | ⬜ À faire | — |

@@ -2,11 +2,23 @@ import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import DeclicTimeline from "@/components/DeclicTimeline";
+import { SHARE_TITLE, SHARE_DESCRIPTION, ogImage } from "@/lib/site";
 
 export const metadata = {
   title: "Le Déclic — SHIFT",
   description:
     "Le parcours d'Alexandre Carneado : dix ans en Product Management, une certification de coach RNCP niveau 6, et le déclic qui a mené à SHIFT.",
+  openGraph: {
+    title: SHARE_TITLE,
+    description: SHARE_DESCRIPTION,
+    images: ogImage("/images/og/le-declic.jpg"),
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SHARE_TITLE,
+    description: SHARE_DESCRIPTION,
+    images: ["/images/og/le-declic.jpg"],
+  },
 };
 
 const CHEMINEMENT = [
