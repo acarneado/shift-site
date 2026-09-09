@@ -180,6 +180,26 @@ textarea::placeholder {
   }
 }
 
+.fo-cluster-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+.fo-approach-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+@media (min-width: 680px) {
+  .fo-cluster-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .fo-approach-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 /* Diagnostic step transition */
 @keyframes dqFade {
   from {

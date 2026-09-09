@@ -1,6 +1,9 @@
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ClusterGrid from "@/components/ClusterGrid";
+import SurMesureBlock from "@/components/SurMesureBlock";
+import ApproachSection from "@/components/ApproachSection";
 import { pageOpenGraph, pageTwitter } from "@/lib/site";
 
 export const metadata = {
@@ -11,22 +14,76 @@ export const metadata = {
   twitter: pageTwitter({ image: "/images/og/formations.jpg" }),
 };
 
-const CE_QUON_TRAITE = [
-  "Prise de parole en public",
-  "Gestion et régulation du stress",
-  "Collaboration et relationnel",
-  "Gestion des conflits",
-  "Posture de manager-coach",
-  "Synchronisation et écoute",
+const CLUSTERS = [
+  {
+    title: "Prise de parole",
+    items: ["Trouver une posture stable et ancrée à l'oral", "Maîtriser sa voix, ses gestes et son regard", "Gagner en impact et en force de conviction"],
+  },
+  {
+    title: "Manager coach",
+    items: ["Développer une écoute active avec son équipe", "Ajuster sa posture managériale au quotidien", "Fixer des objectifs clairs et suivis"],
+  },
+  {
+    title: "Gestion du stress",
+    items: ["Identifier ses propres sources de stress", "Mettre en place des solutions concrètes", "Ancrer de nouveaux réflexes dans la durée"],
+  },
+  {
+    title: "Collaboration et communication",
+    items: [
+      "Répondre aux objections avec aisance",
+      "Comprendre les dynamiques relationnelles à l'œuvre",
+      "Sortir d'une dynamique de collaboration toxique",
+      "Adopter une communication non violente",
+    ],
+  },
+  {
+    title: "Booster sa confiance",
+    items: ["Se reconnecter à son expérience et à sa valeur", "Se projeter avec authenticité dans son rôle", "Affirmer sa légitimité et sa prise de place"],
+  },
+  {
+    title: "Se reconnecter à soi",
+    items: ["Clarifier ses valeurs professionnelles", "Identifier ses besoins et ses limites", "Interroger ses croyances limitantes"],
+  },
 ];
 
-const BENEFICES = [
-  "Des repères concrets et partagés au sein d'une équipe",
-  "Une prise de parole plus assurée, y compris face à un groupe",
-  "Des tensions mieux identifiées, avant qu'elles ne s'installent",
-  "Une posture managériale mieux outillée, entre proximité et autorité",
-  "Une meilleure écoute et une coopération plus fluide au quotidien",
-  "Un langage commun, qui reste après la formation",
+const APPROACH_TILES = [
+  {
+    title: "Premier échange",
+    text: "Cadrer ensemble le besoin, les participants et le lieu",
+    bg: "var(--primary-wash)",
+    color: "var(--primary)",
+    icon: (
+      <svg width="16" height="16" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.4">
+        <circle cx="5" cy="9" r="2.3" />
+        <circle cx="13" cy="9" r="2.3" />
+        <line x1="7.3" y1="9" x2="10.7" y2="9" />
+      </svg>
+    ),
+  },
+  {
+    title: "Format adapté",
+    text: "De 1h30 à une journée complète",
+    bg: "var(--primary-wash)",
+    color: "var(--primary)",
+    icon: (
+      <svg width="16" height="16" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.4">
+        <circle cx="9" cy="9" r="6.2" />
+        <line x1="9" y1="5.5" x2="9" y2="9" />
+        <line x1="9" y1="9" x2="11.6" y2="10.6" />
+      </svg>
+    ),
+  },
+  {
+    title: "Une dimension incarnée",
+    text: "Selon le groupe et le contexte, certaines mises en situation s'appuient sur des techniques théâtrales",
+    bg: "oklch(0.62 0.10 40 / 0.14)",
+    color: "var(--accent)",
+    icon: (
+      <svg width="16" height="16" viewBox="0 0 18 18" fill="currentColor" stroke="none">
+        <path d="M9 2c0 3.9 1.1 5 5 5-3.9 0-5 1.1-5 5 0-3.9-1.1-5-5-5 3.9 0 5-1.1 5-5Z" />
+      </svg>
+    ),
+  },
 ];
 
 const RYTHME = [
@@ -125,34 +182,17 @@ export default function Formations() {
         </p>
       </section>
 
-      <section style={{ padding: "16px clamp(20px,6vw,64px) 48px", display: "flex", flexWrap: "wrap", gap: 40 }}>
-        <div style={{ flex: "1 1 320px", borderLeft: "2px solid var(--accent)", paddingLeft: 20 }}>
-          <p style={{ fontSize: 13, letterSpacing: "1.5px", textTransform: "uppercase", color: "var(--muted)", margin: "0 0 16px" }}>
-            Ce qu&apos;on y traite
-          </p>
-          <ul style={{ fontSize: 16, lineHeight: 1.6, margin: 0, padding: 0, listStyle: "none", display: "flex", flexDirection: "column", gap: 12 }}>
-            {CE_QUON_TRAITE.map((item) => (
-              <li key={item} style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
-                <span style={{ width: 7, height: 7, minWidth: 7, borderRadius: "50%", background: "var(--accent)", marginTop: 8 }}></span>
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div style={{ flex: "1 1 320px", borderLeft: "2px solid var(--primary)", paddingLeft: 20 }}>
-          <p style={{ fontSize: 13, letterSpacing: "1.5px", textTransform: "uppercase", color: "var(--muted)", margin: "0 0 16px" }}>
-            Les bénéfices
-          </p>
-          <ul style={{ fontSize: 16, lineHeight: 1.6, margin: 0, padding: 0, listStyle: "none", display: "flex", flexDirection: "column", gap: 12 }}>
-            {BENEFICES.map((item) => (
-              <li key={item} style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
-                <span style={{ width: 7, height: 7, minWidth: 7, borderRadius: "50%", background: "var(--primary)", marginTop: 8 }}></span>
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
+      <section style={{ padding: "16px clamp(20px,6vw,64px) 8px" }}>
+        <p style={{ fontSize: 13, letterSpacing: "1.5px", textTransform: "uppercase", color: "var(--muted)", margin: "0 0 24px" }}>
+          Ce qu&apos;on y traite
+        </p>
+        <ClusterGrid clusters={CLUSTERS} gridClassName="fo-cluster-grid" />
       </section>
+
+      <SurMesureBlock
+        heading="Ces thématiques ne sont pas une limite."
+        body="Si le besoin de votre équipe ne correspond à aucun sujet ci-dessus, une formation peut être conçue spécifiquement, à partir de votre contexte et de vos objectifs."
+      />
 
       <section style={{ padding: "8px clamp(20px,6vw,64px) 40px" }}>
         <p style={{ fontSize: 13, letterSpacing: "1.5px", textTransform: "uppercase", color: "var(--muted)", margin: "0 0 24px" }}>
@@ -171,22 +211,14 @@ export default function Formations() {
         </div>
       </section>
 
-      <section style={{ padding: "8px clamp(20px,6vw,64px) 64px" }}>
-        <div style={{ background: "var(--card)", border: "1px solid var(--border)", borderRadius: 20, padding: "clamp(32px,5vw,48px)" }}>
-          <p style={{ fontSize: 13, letterSpacing: "1.5px", textTransform: "uppercase", color: "var(--muted)", margin: "0 0 20px" }}>
-            Comment ça se déroule
-          </p>
-          <p style={{ fontSize: 16, lineHeight: 1.7, margin: "0 0 16px", maxWidth: 600 }}>
-            Le besoin est cadré directement avec l&apos;entreprise pour définir la thématique et les
-            participants concernés.
-          </p>
-          <p style={{ fontSize: 16, lineHeight: 1.7, margin: 0, maxWidth: 600 }}>
-            La formation se déroule sur un format adapté au besoin : de 1h30 à 2h pour un format court,
-            jusqu&apos;à une demi-journée ou une journée complète, dans les locaux de l&apos;entreprise ou à
-            distance selon les besoins.
-          </p>
-        </div>
-      </section>
+      <ApproachSection
+        sectionPadding="8px clamp(20px,6vw,64px) 64px"
+        cardPadding="clamp(32px,5vw,48px)"
+        gridClassName="fo-approach-grid"
+        hook="Des outils concrets, ancrés dans le quotidien de vos équipes."
+        hookMarginBottom={28}
+        tiles={APPROACH_TILES}
+      />
 
       <section style={{ padding: "0 clamp(20px,6vw,64px) 88px" }}>
         <div

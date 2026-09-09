@@ -2,6 +2,9 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import TestimonialCarousel from "@/components/TestimonialCarousel";
+import ClusterGrid from "@/components/ClusterGrid";
+import SurMesureBlock from "@/components/SurMesureBlock";
+import ApproachSection from "@/components/ApproachSection";
 import { pageOpenGraph, pageTwitter } from "@/lib/site";
 
 export const metadata = {
@@ -137,88 +140,22 @@ export default function CoachingIndividuel() {
         <p style={{ fontSize: 13, letterSpacing: "1.5px", textTransform: "uppercase", color: "var(--muted)", margin: "0 0 20px" }}>
           Ce qu&apos;on y traite
         </p>
-        <div className="ci-cluster-grid">
-          {CLUSTERS.map((cluster) => (
-            <div
-              key={cluster.title}
-              className="card-hover-lg"
-              style={{ border: "1px solid var(--border)", borderRadius: 16, padding: "24px 26px", transition: "all 0.2s ease" }}
-            >
-              <h3 style={{ fontFamily: "var(--font-lora), serif", fontWeight: 500, fontSize: 19, margin: "0 0 14px", color: "var(--primary)" }}>
-                {cluster.title}
-              </h3>
-              <ul
-                style={{
-                  fontSize: 14.5,
-                  lineHeight: 1.6,
-                  margin: 0,
-                  padding: 0,
-                  listStyle: "none",
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: 8,
-                  color: "oklch(0.4 0.02 50)",
-                }}
-              >
-                {cluster.items.map((item) => (
-                  <li key={item} style={{ display: "flex", gap: 8, alignItems: "flex-start" }}>
-                    <span style={{ width: 6, height: 6, minWidth: 6, borderRadius: "50%", background: "var(--accent)", marginTop: 7 }}></span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
+        <ClusterGrid clusters={CLUSTERS} gridClassName="ci-cluster-grid" />
       </section>
 
-      <section style={{ padding: "0 clamp(20px,6vw,64px) 40px" }}>
-        <div style={{ background: "var(--card)", border: "1px solid var(--border)", borderRadius: 20, padding: "clamp(28px,4vw,40px)" }}>
-          <p style={{ fontSize: 13, letterSpacing: "1.5px", textTransform: "uppercase", color: "var(--muted)", margin: "0 0 16px" }}>
-            Mon approche
-          </p>
-          <p
-            style={{
-              fontFamily: "var(--font-lora), serif",
-              fontWeight: 600,
-              fontSize: 20,
-              lineHeight: 1.4,
-              margin: "0 0 24px",
-              color: "var(--primary)",
-              maxWidth: 520,
-            }}
-          >
-            Créer le cadre pour que vous trouviez vos propres réponses.
-          </p>
-          <div className="ci-approach-grid">
-            {APPROACH_TILES.map((tile) => (
-              <div key={tile.title} style={{ display: "flex", gap: 14, alignItems: "flex-start" }}>
-                <div
-                  style={{
-                    width: 34,
-                    height: 34,
-                    borderRadius: 999,
-                    background: tile.bg,
-                    color: tile.color,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    flexShrink: 0,
-                  }}
-                >
-                  {tile.icon}
-                </div>
-                <div>
-                  <p style={{ fontFamily: "var(--font-lora), serif", fontWeight: 500, fontSize: 15.5, margin: "0 0 4px", color: "var(--text)" }}>
-                    {tile.title}
-                  </p>
-                  <p style={{ fontSize: 14, lineHeight: 1.5, margin: 0, color: "var(--muted)" }}>{tile.text}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <SurMesureBlock
+        heading="Un accompagnement spécifique qui vous correspond"
+        body="Au-delà de ces thématiques, chaque accompagnement se construit autour de vos enjeux spécifiques."
+      />
+
+      <ApproachSection
+        sectionPadding="0 clamp(20px,6vw,64px) 40px"
+        cardPadding="clamp(28px,4vw,40px)"
+        gridClassName="ci-approach-grid"
+        hook="Créer le cadre pour que vous trouviez vos propres réponses."
+        hookMarginBottom={24}
+        tiles={APPROACH_TILES}
+      />
 
       <section style={{ padding: "0 clamp(20px,6vw,64px) 40px" }}>
         <div
