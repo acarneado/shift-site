@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import AtelierTheatreScene from "@/components/AtelierTheatreScene";
 import TestimonialCarousel from "@/components/TestimonialCarousel";
 import { pageOpenGraph, pageTwitter, pageCanonical } from "@/lib/site";
+import { TESTIMONIALS as T } from "@/lib/testimonials";
 
 export const metadata = {
   title: "Atelier théâtre en entreprise — SHIFT",
@@ -14,14 +15,7 @@ export const metadata = {
   alternates: pageCanonical("/accompagnements/atelier-theatre"),
 };
 
-const TESTIMONIALS = [
-  { text: "Un chouette moment, fun et libre, pour prendre la parole devant les autres. J'en suis ressorti plus serein dans ma façon de m'exprimer, et en plus, je me suis amusé.", name: "Tristan" },
-  { text: "On apprend à accepter les regards, à s'en libérer pour avoir plus d'espace dédié à la création, à l'improvisation, au développement de sa pensée en direct.", name: "Mathias V." },
-  { text: "J'arrive à plus me lâcher dans des contextes d'improvisation, et j'ai le goût d'y revenir !", name: "Rayan R." },
-  { text: "J'ai cassé des barrières mentales que je m'étais créées. Ça m'a permis de prendre confiance en moi.", name: "Pauline P." },
-  { text: "J'ai amélioré ma capacité à prendre la parole en public, à me détacher de la peur du jugement.", name: "Pierre L." },
-  { text: "Ça m'a permis d'oser davantage, d'avoir moins peur du ridicule, de travailler mon imagination et mon improvisation.", name: "Christopher W." },
-];
+const TESTIMONIALS = [T.tristan, T.mathiasV, T.rayanR, T.paulineP, T.pierreL, T.christopherW];
 
 const CE_QUIL_FAUT_SAVOIR = [
   {

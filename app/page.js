@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import HeroTrace from "@/components/HeroTrace";
 import TestimonialCarousel from "@/components/TestimonialCarousel";
+import { TESTIMONIALS as T } from "@/lib/testimonials";
 
 // Aperçu "Ressources" masqué tant qu'il n'y a qu'un seul article réel —
 // code conservé pour le réactiver dès que le contenu le justifie.
@@ -28,15 +29,15 @@ const OFFERINGS = [
 ];
 
 const TESTIMONIALS = [
-  { text: "Trois séances ont suffi pour que je me sente aujourd'hui mieux équipé sur ce sujet.", name: "Hugo" },
-  { text: "J'ai cassé des barrières mentales que je m'étais créées. Ça m'a permis de prendre confiance en moi.", name: "Pauline P." },
-  { text: "On apprend à accepter les regards, à s'en libérer pour avoir plus d'espace dédié à la création, à l'improvisation, au développement de sa pensée en direct.", name: "Mathias V." },
-  { text: "Un chouette moment, fun et libre, pour prendre la parole devant les autres. J'en suis ressorti plus serein dans ma façon de m'exprimer.", name: "Tristan" },
-  { text: "J'ai amélioré ma capacité à prendre la parole en public, à me détacher de la peur du jugement.", name: "Pierre L." },
-  { text: "J'arrive à plus me lâcher dans des contextes d'improvisation, et j'ai le goût d'y revenir !", name: "Rayan R." },
-  { text: "Par le biais des exercices de théâtre animés par Alexandre, j'arrivais à me recentrer avec moi-même, évacuer le stress, canaliser mes émotions et mieux les communiquer.", name: "Une personne accompagnée en atelier expérientiel / théâtre" },
-  { text: "Ça m'a permis d'oser davantage, d'avoir moins peur du ridicule, de travailler mon imagination et mon improvisation.", name: "Christopher W." },
-  { text: "J'ai vraiment compris la force des petites actions et des « petits pas » pour m'amener vers un objectif.", name: "Camille P." },
+  T.hugo,
+  T.paulineP,
+  T.mathiasV,
+  T.tristan,
+  T.pierreL,
+  T.rayanR,
+  T.atelierAnonyme,
+  T.christopherW,
+  T.camilleP,
 ];
 const ARTICLES = [
   { title: "Changer de poste sans perdre pied", tag: "Transition", time: "6 min" },

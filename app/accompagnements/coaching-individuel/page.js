@@ -6,6 +6,7 @@ import ClusterGrid from "@/components/ClusterGrid";
 import SurMesureBlock from "@/components/SurMesureBlock";
 import ApproachSection from "@/components/ApproachSection";
 import { pageOpenGraph, pageTwitter, pageCanonical } from "@/lib/site";
+import { TESTIMONIALS as T } from "@/lib/testimonials";
 
 export const metadata = {
   title: "Coaching individuel — SHIFT",
@@ -87,16 +88,7 @@ const APPROACH_TILES = [
   },
 ];
 
-const TESTIMONIALS = [
-  {
-    text: "Alexandre m'a d'abord aidé à comprendre pourquoi cet objectif était important pour moi, quelles étaient mes motivations profondes pour ce rôle de manager. Ensuite, nous sommes partis de cas concrets pour lister des idées et faire évoluer mon style de management dans la bonne direction. Trois séances ont suffi pour que je me sente aujourd'hui mieux équipé sur ce sujet.",
-    name: "Hugo",
-  },
-  {
-    text: "J'ai vraiment compris la force des petites actions et des « petits pas » pour m'amener vers un objectif. Encore aujourd'hui, dès que le doute s'installe, je me pousse à agir et je calibre ces actions de la bonne façon.",
-    name: "Camille P.",
-  },
-];
+const TESTIMONIALS = [T.hugo, T.camilleP];
 
 export default function CoachingIndividuel() {
   return (
