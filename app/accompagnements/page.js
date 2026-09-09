@@ -1,23 +1,14 @@
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { SHARE_TITLE, SHARE_DESCRIPTION, ogImage } from "@/lib/site";
+import { pageOpenGraph, pageTwitter } from "@/lib/site";
 
 export const metadata = {
   title: "Accompagnements — SHIFT",
   description:
     "Coaching individuel, formations et ateliers théâtre en entreprise : trois formats, pour des besoins différents.",
-  openGraph: {
-    title: SHARE_TITLE,
-    description: SHARE_DESCRIPTION,
-    images: ogImage("/images/og/accompagnements.jpg"),
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: SHARE_TITLE,
-    description: SHARE_DESCRIPTION,
-    images: ["/images/og/accompagnements.jpg"],
-  },
+  openGraph: pageOpenGraph({ routePath: "/accompagnements", image: "/images/og/accompagnements.jpg" }),
+  twitter: pageTwitter({ image: "/images/og/accompagnements.jpg" }),
 };
 
 function Tag({ children, accent, bg }) {

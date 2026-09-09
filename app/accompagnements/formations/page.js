@@ -1,23 +1,14 @@
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { SHARE_TITLE, SHARE_DESCRIPTION, ogImage } from "@/lib/site";
+import { pageOpenGraph, pageTwitter } from "@/lib/site";
 
 export const metadata = {
   title: "Formations — SHIFT",
   description:
     "Des formats courts pour outiller managers et équipes sur la posture managériale, la légitimité et la prise de poste, adaptés au contexte de l'entreprise.",
-  openGraph: {
-    title: SHARE_TITLE,
-    description: SHARE_DESCRIPTION,
-    images: ogImage("/images/og/formations.jpg"),
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: SHARE_TITLE,
-    description: SHARE_DESCRIPTION,
-    images: ["/images/og/formations.jpg"],
-  },
+  openGraph: pageOpenGraph({ routePath: "/accompagnements/formations", image: "/images/og/formations.jpg" }),
+  twitter: pageTwitter({ image: "/images/og/formations.jpg" }),
 };
 
 const CE_QUON_TRAITE = [
