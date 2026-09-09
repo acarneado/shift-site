@@ -74,7 +74,7 @@ export default function Home() {
                 maxWidth: 960,
               }}
             >
-              Vous pouvez occuper votre rôle.
+              Vous pouvez enclencher le mouvement.
               <br />
               Et l&apos;incarner pleinement.
             </h1>
