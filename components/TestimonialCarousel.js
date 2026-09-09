@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 
 const RESUME_DELAY = 3000;
 const SPEED = 0.55; // px per frame at 60fps
+const KEY_STEP = 320; // ~1 carte (300px) + gap (20px)
 
 export default function TestimonialCarousel({ testimonials }) {
   const trackRef = useRef(null);
@@ -94,6 +95,13 @@ export default function TestimonialCarousel({ testimonials }) {
         e.stopPropagation();
       }
     };
+    const onKeyDown = (e) => {
+      if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+      e.preventDefault();
+      programmatic = true;
+      scroller.scrollLeft += e.key === "ArrowRight" ? KEY_STEP : -KEY_STEP;
+      interact();
+    };
 
     scroller.addEventListener("wheel", interact, { passive: true });
     scroller.addEventListener("touchstart", pause, { passive: true });
@@ -107,6 +115,7 @@ export default function TestimonialCarousel({ testimonials }) {
     scroller.addEventListener("pointerup", endDrag);
     scroller.addEventListener("pointercancel", endDrag);
     scroller.addEventListener("pointerleave", endDrag);
+    scroller.addEventListener("keydown", onKeyDown);
     track.addEventListener("click", onTrackClick, true);
 
     let rafId;
@@ -151,16 +160,18 @@ export default function TestimonialCarousel({ testimonials }) {
       scroller.removeEventListener("pointerup", endDrag);
       scroller.removeEventListener("pointercancel", endDrag);
       scroller.removeEventListener("pointerleave", endDrag);
+      scroller.removeEventListener("keydown", onKeyDown);
       track.removeEventListener("click", onTrackClick, true);
     };
   }, [testimonials]);
 
   return (
-    <div style={{ overflow: "hidden" }}>
+    <div role="region" aria-label="Témoignages" tabIndex={0} style={{ overflow: "hidden" }}>
       <div ref={trackRef} className="carousel-track" style={{ display: "flex", gap: 20, width: "max-content" }}>
         {items.map((t, i) => (
           <div
             key={i}
+            aria-hidden={i >= testimonials.length}
             style={{
               background: "var(--card)",
               border: "1px solid oklch(0.62 0.10 40 / 0.3)",
