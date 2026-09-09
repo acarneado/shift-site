@@ -527,7 +527,7 @@ export default function DiagnosticApp() {
                 className="btn-pill-primary"
                 style={{ padding: "13px 26px", borderRadius: 999, fontSize: 15, fontWeight: 600, border: "none", cursor: "pointer", fontFamily: "var(--font-ibm-plex-sans), sans-serif" }}
               >
-                Continuer
+                Suivant
               </button>
             </div>
           )}
@@ -559,7 +559,7 @@ export default function DiagnosticApp() {
                 className="btn-pill-primary"
                 style={{ padding: "13px 26px", borderRadius: 999, fontSize: 15, fontWeight: 600, border: "none", cursor: "pointer", fontFamily: "var(--font-ibm-plex-sans), sans-serif" }}
               >
-                Continuer
+                Suivant
               </button>
             </div>
           )}
