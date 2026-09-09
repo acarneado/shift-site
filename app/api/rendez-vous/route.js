@@ -43,13 +43,17 @@ export async function POST(request) {
   const trimmedName = name.trim();
   const trimmedEmail = email.trim();
   const trimmedMessage = message.trim();
+  // Strip line breaks before interpolating into an email header — cheap guard
+  // against header injection from freeform input.
+  const stripNewlines = (s) => String(s).replace(/[\r\n]+/g, " ").trim();
+  const subjectPrefix = interest ? `[${stripNewlines(interest)}] ` : "";
 
   try {
     const { error } = await resend.emails.send({
       from: "SHIFT — Site web <onboarding@resend.dev>",
       to: TO_EMAIL,
       replyTo: trimmedEmail,
-      subject: `Nouvelle demande de rendez-vous — ${trimmedName}`,
+      subject: `${subjectPrefix}Nouvelle demande de rendez-vous — ${stripNewlines(trimmedName)}`,
       text: [
         `Nom : ${trimmedName}`,
         `Email : ${trimmedEmail}`,
