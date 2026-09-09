@@ -255,7 +255,14 @@ export default function DiagnosticApp() {
   return (
     <>
       {showProgress && (
-        <div style={{ height: 3, background: "oklch(0.9 0.008 55)" }}>
+        <div
+          role="progressbar"
+          aria-label="Progression du diagnostic"
+          aria-valuenow={Math.round(progress)}
+          aria-valuemin={0}
+          aria-valuemax={100}
+          style={{ height: 3, background: "oklch(0.9 0.008 55)" }}
+        >
           <div
             style={{
               height: "100%",
