@@ -131,28 +131,44 @@ export default function RendezVousApp() {
           </div>
 
           <div>
-            <label style={{ display: "block", fontSize: 13, color: "var(--muted)", margin: "0 0 6px" }}>Nom</label>
+            <label htmlFor="rdv-name" style={{ display: "block", fontSize: 13, color: "var(--muted)", margin: "0 0 6px" }}>
+              Nom
+            </label>
             <input
+              id="rdv-name"
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="Votre nom"
               style={inputStyle(!!errors.name)}
               aria-invalid={!!errors.name}
+              aria-describedby={errors.name ? "rdv-name-error" : undefined}
             />
-            {errors.name && <p style={errorTextStyle}>{errors.name}</p>}
+            {errors.name && (
+              <p id="rdv-name-error" style={errorTextStyle}>
+                {errors.name}
+              </p>
+            )}
           </div>
           <div>
-            <label style={{ display: "block", fontSize: 13, color: "var(--muted)", margin: "0 0 6px" }}>Email</label>
+            <label htmlFor="rdv-email" style={{ display: "block", fontSize: 13, color: "var(--muted)", margin: "0 0 6px" }}>
+              Email
+            </label>
             <input
+              id="rdv-email"
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="vous@exemple.com"
               style={inputStyle(!!errors.email)}
               aria-invalid={!!errors.email}
+              aria-describedby={errors.email ? "rdv-email-error" : undefined}
             />
-            {errors.email && <p style={errorTextStyle}>{errors.email}</p>}
+            {errors.email && (
+              <p id="rdv-email-error" style={errorTextStyle}>
+                {errors.email}
+              </p>
+            )}
           </div>
           <div>
             <label style={{ display: "block", fontSize: 13, color: "var(--muted)", margin: "0 0 6px" }}>
@@ -209,16 +225,24 @@ export default function RendezVousApp() {
             </div>
           </div>
           <div>
-            <label style={{ display: "block", fontSize: 13, color: "var(--muted)", margin: "0 0 6px" }}>Message</label>
+            <label htmlFor="rdv-message" style={{ display: "block", fontSize: 13, color: "var(--muted)", margin: "0 0 6px" }}>
+              Message
+            </label>
             <textarea
+              id="rdv-message"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               placeholder="Quelques mots sur votre situation"
               rows={4}
               style={{ ...inputStyle(!!errors.message), resize: "vertical" }}
               aria-invalid={!!errors.message}
+              aria-describedby={errors.message ? "rdv-message-error" : undefined}
             ></textarea>
-            {errors.message && <p style={errorTextStyle}>{errors.message}</p>}
+            {errors.message && (
+              <p id="rdv-message-error" style={errorTextStyle}>
+                {errors.message}
+              </p>
+            )}
           </div>
 
           {submitError && (

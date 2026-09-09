@@ -330,10 +330,14 @@ export default function DiagnosticApp() {
 
           {s === "themeFree" && (
             <div className="dq-step">
-              <h2 style={{ fontFamily: "var(--font-lora), serif", fontWeight: 500, fontSize: "clamp(23px,3vw,28px)", lineHeight: 1.35, margin: "0 0 20px" }}>
+              <h2
+                id="dq-themeFree-question"
+                style={{ fontFamily: "var(--font-lora), serif", fontWeight: 500, fontSize: "clamp(23px,3vw,28px)", lineHeight: 1.35, margin: "0 0 20px" }}
+              >
                 En quelques mots, qu&apos;est-ce qui vous occupe ?
               </h2>
               <textarea
+                aria-labelledby="dq-themeFree-question"
                 value={freeText}
                 onChange={onFreeTextChange}
                 placeholder="Ex : Je me sens à côté de mon poste, sans trop savoir pourquoi."
@@ -437,10 +441,14 @@ export default function DiagnosticApp() {
 
           {s === "vecuFree" && (
             <div className="dq-step">
-              <h2 style={{ fontFamily: "var(--font-lora), serif", fontWeight: 500, fontSize: "clamp(23px,3vw,28px)", lineHeight: 1.35, margin: "0 0 20px" }}>
+              <h2
+                id="dq-vecuFree-question"
+                style={{ fontFamily: "var(--font-lora), serif", fontWeight: 500, fontSize: "clamp(23px,3vw,28px)", lineHeight: 1.35, margin: "0 0 20px" }}
+              >
                 En quelques mots, qu&apos;est-ce qui vous parle davantage ?
               </h2>
               <textarea
+                aria-labelledby="dq-vecuFree-question"
                 value={freeText}
                 onChange={onFreeTextChange}
                 placeholder="Décrivez-le à votre façon."
@@ -470,7 +478,10 @@ export default function DiagnosticApp() {
 
           {s === "severity" && (
             <div className="dq-step">
-              <h2 style={{ fontFamily: "var(--font-lora), serif", fontWeight: 500, fontSize: "clamp(23px,3vw,28px)", lineHeight: 1.35, margin: "0 0 40px" }}>
+              <h2
+                id="dq-severity-question"
+                style={{ fontFamily: "var(--font-lora), serif", fontWeight: 500, fontSize: "clamp(23px,3vw,28px)", lineHeight: 1.35, margin: "0 0 40px" }}
+              >
                 À quel point est-ce que ce que vous venez de décrire pèse sur vous, aujourd&apos;hui ?
               </h2>
               <input
@@ -480,6 +491,8 @@ export default function DiagnosticApp() {
                 max="10"
                 value={state.severity}
                 onChange={(e) => setState((prev) => ({ ...prev, severity: parseInt(e.target.value, 10) }))}
+                aria-labelledby="dq-severity-question"
+                aria-valuetext={`${state.severity} sur 10, de "Pas vraiment" à "Énormément"`}
               />
               <div style={{ display: "flex", justifyContent: "space-between", fontSize: 13, color: "var(--muted)", margin: "10px 0 32px" }}>
                 <span>Pas vraiment</span>
@@ -497,7 +510,10 @@ export default function DiagnosticApp() {
 
           {s === "motivation" && (
             <div className="dq-step">
-              <h2 style={{ fontFamily: "var(--font-lora), serif", fontWeight: 500, fontSize: "clamp(23px,3vw,28px)", lineHeight: 1.35, margin: "0 0 40px" }}>
+              <h2
+                id="dq-motivation-question"
+                style={{ fontFamily: "var(--font-lora), serif", fontWeight: 500, fontSize: "clamp(23px,3vw,28px)", lineHeight: 1.35, margin: "0 0 40px" }}
+              >
                 Avez-vous envie que ça change ?
               </h2>
               <input
@@ -507,6 +523,8 @@ export default function DiagnosticApp() {
                 max="10"
                 value={state.motivation}
                 onChange={(e) => setState((prev) => ({ ...prev, motivation: parseInt(e.target.value, 10) }))}
+                aria-labelledby="dq-motivation-question"
+                aria-valuetext={`${state.motivation} sur 10, de "Pas vraiment" à "Oui, clairement"`}
               />
               <div style={{ display: "flex", justifyContent: "space-between", fontSize: 13, color: "var(--muted)", margin: "10px 0 32px" }}>
                 <span>Pas vraiment</span>
