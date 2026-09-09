@@ -1,7 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import RendezVousApp from "@/components/RendezVousApp";
-import { pageOpenGraph, pageTwitter } from "@/lib/site";
+import { pageOpenGraph, pageTwitter, pageCanonical } from "@/lib/site";
 
 export const metadata = {
   title: "Prendre rendez-vous — SHIFT",
@@ -9,6 +9,7 @@ export const metadata = {
     "Ce n'est pas un engagement, juste un premier échange. Contactez Alexandre Carneado pour clarifier votre situation.",
   openGraph: pageOpenGraph({ routePath: "/rendez-vous", image: "/images/og/rendez-vous.jpg" }),
   twitter: pageTwitter({ image: "/images/og/rendez-vous.jpg" }),
+  alternates: pageCanonical("/rendez-vous"),
 };
 
 export default function RendezVous() {

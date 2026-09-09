@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import ClusterGrid from "@/components/ClusterGrid";
 import SurMesureBlock from "@/components/SurMesureBlock";
 import ApproachSection from "@/components/ApproachSection";
-import { pageOpenGraph, pageTwitter } from "@/lib/site";
+import { pageOpenGraph, pageTwitter, pageCanonical } from "@/lib/site";
 
 export const metadata = {
   title: "Formations — SHIFT",
@@ -12,6 +12,7 @@ export const metadata = {
     "Des formats courts pour outiller managers et équipes sur la posture managériale, la légitimité et la prise de poste, adaptés au contexte de l'entreprise.",
   openGraph: pageOpenGraph({ routePath: "/accompagnements/formations", image: "/images/og/formations.jpg" }),
   twitter: pageTwitter({ image: "/images/og/formations.jpg" }),
+  alternates: pageCanonical("/accompagnements/formations"),
 };
 
 const CLUSTERS = [

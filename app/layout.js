@@ -1,7 +1,7 @@
 import { Lora, IBM_Plex_Sans } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { SITE_URL, SHARE_TITLE, SHARE_DESCRIPTION, pageOpenGraph, pageTwitter } from "@/lib/site";
+import { SITE_URL, SHARE_TITLE, SHARE_DESCRIPTION, pageOpenGraph, pageTwitter, pageCanonical, PERSON_JSON_LD } from "@/lib/site";
 import "./globals.css";
 
 const lora = Lora({
@@ -33,12 +33,14 @@ export const metadata = {
   description: SHARE_DESCRIPTION,
   openGraph: pageOpenGraph({ routePath: "/", image: "/images/og/accueil.jpg" }),
   twitter: pageTwitter({ image: "/images/og/accueil.jpg" }),
+  alternates: pageCanonical("/"),
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="fr" className={`${lora.variable} ${ibmPlexSans.variable}`}>
       <body>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(PERSON_JSON_LD) }} />
         {children}
         <Analytics />
         <SpeedInsights />

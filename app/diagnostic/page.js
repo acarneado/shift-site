@@ -1,7 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import DiagnosticApp from "@/components/DiagnosticApp";
-import { pageOpenGraph, pageTwitter } from "@/lib/site";
+import { pageOpenGraph, pageTwitter, pageCanonical } from "@/lib/site";
 
 export const metadata = {
   title: "Diagnostic — SHIFT",
@@ -9,6 +9,7 @@ export const metadata = {
     "Un point sur votre situation, en une minute. Quelques questions simples, anonymes et sans engagement, pour voir plus clair.",
   openGraph: pageOpenGraph({ routePath: "/diagnostic", image: "/images/og/diagnostic.jpg" }),
   twitter: pageTwitter({ image: "/images/og/diagnostic.jpg" }),
+  alternates: pageCanonical("/diagnostic"),
 };
 
 export default function Diagnostic() {

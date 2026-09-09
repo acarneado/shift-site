@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { pageOpenGraph, pageTwitter } from "@/lib/site";
+import { pageOpenGraph, pageTwitter, pageCanonical } from "@/lib/site";
 
 export const metadata = {
   title: "Accompagnements — SHIFT",
@@ -9,6 +9,7 @@ export const metadata = {
     "Coaching individuel, formations et ateliers théâtre en entreprise : trois formats, pour des besoins différents.",
   openGraph: pageOpenGraph({ routePath: "/accompagnements", image: "/images/og/accompagnements.jpg" }),
   twitter: pageTwitter({ image: "/images/og/accompagnements.jpg" }),
+  alternates: pageCanonical("/accompagnements"),
 };
 
 function Tag({ children, accent, bg }) {
@@ -124,7 +125,12 @@ export default function Accompagnements() {
             </Tag>
           </div>
           <div style={{ borderTop: "1px solid var(--border)", marginTop: 24, paddingTop: 18, display: "flex", justifyContent: "flex-end" }}>
-            <Link href="/accompagnements/coaching-individuel" className="btn-pill-outline btn-pill-outline--card" style={{ display: "inline-block", padding: "10px 20px", borderRadius: 999, fontSize: 14, fontWeight: 600 }}>
+            <Link
+              href="/accompagnements/coaching-individuel"
+              className="btn-pill-outline btn-pill-outline--card"
+              aria-label="Voir le détail — Coaching individuel"
+              style={{ display: "inline-block", padding: "10px 20px", borderRadius: 999, fontSize: 14, fontWeight: 600 }}
+            >
               Voir le détail →
             </Link>
           </div>
@@ -189,7 +195,12 @@ export default function Accompagnements() {
             </Tag>
           </div>
           <div style={{ borderTop: "1px solid var(--border)", marginTop: 24, paddingTop: 18, display: "flex", justifyContent: "flex-end" }}>
-            <Link href="/accompagnements/formations" className="btn-pill-outline btn-pill-outline--card" style={{ display: "inline-block", padding: "10px 20px", borderRadius: 999, fontSize: 14, fontWeight: 600 }}>
+            <Link
+              href="/accompagnements/formations"
+              className="btn-pill-outline btn-pill-outline--card"
+              aria-label="Voir le détail — Formations"
+              style={{ display: "inline-block", padding: "10px 20px", borderRadius: 999, fontSize: 14, fontWeight: 600 }}
+            >
               Voir le détail →
             </Link>
           </div>
@@ -251,7 +262,12 @@ export default function Accompagnements() {
             </Tag>
           </div>
           <div style={{ borderTop: "1px solid var(--border)", marginTop: 24, paddingTop: 18, display: "flex", justifyContent: "flex-end" }}>
-            <Link href="/accompagnements/atelier-theatre" className="btn-pill-outline" style={{ display: "inline-block", padding: "10px 20px", borderRadius: 999, fontSize: 14, fontWeight: 600 }}>
+            <Link
+              href="/accompagnements/atelier-theatre"
+              className="btn-pill-outline"
+              aria-label="Voir le détail — Atelier théâtre"
+              style={{ display: "inline-block", padding: "10px 20px", borderRadius: 999, fontSize: 14, fontWeight: 600 }}
+            >
               Voir le détail →
             </Link>
           </div>

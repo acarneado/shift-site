@@ -1,9 +1,11 @@
 import Link from "next/link";
 import Footer from "@/components/Footer";
+import { pageCanonical } from "@/lib/site";
 
 export const metadata = {
   title: "Mentions légales — SHIFT",
   description: "Informations légales du site SHIFT.",
+  alternates: pageCanonical("/mentions-legales"),
 };
 
 const sectionTitleStyle = {

@@ -5,7 +5,7 @@ import TestimonialCarousel from "@/components/TestimonialCarousel";
 import ClusterGrid from "@/components/ClusterGrid";
 import SurMesureBlock from "@/components/SurMesureBlock";
 import ApproachSection from "@/components/ApproachSection";
-import { pageOpenGraph, pageTwitter } from "@/lib/site";
+import { pageOpenGraph, pageTwitter, pageCanonical } from "@/lib/site";
 
 export const metadata = {
   title: "Coaching individuel — SHIFT",
@@ -13,6 +13,7 @@ export const metadata = {
     "Prise de poste, changement de rôle, sentiment de manque de légitimité, quête de sens : un accompagnement individuel pour avancer sur sa propre situation, à son rythme.",
   openGraph: pageOpenGraph({ routePath: "/accompagnements/coaching-individuel", image: "/images/og/coaching-individuel.jpg" }),
   twitter: pageTwitter({ image: "/images/og/coaching-individuel.jpg" }),
+  alternates: pageCanonical("/accompagnements/coaching-individuel"),
 };
 
 const CLUSTERS = [
