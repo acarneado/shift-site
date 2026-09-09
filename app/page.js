@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import HeroTrace from "@/components/HeroTrace";
@@ -244,6 +245,7 @@ export default function Home() {
           >
             <div
               style={{
+                position: "relative",
                 width: 88,
                 height: 88,
                 borderRadius: "50%",
@@ -251,11 +253,12 @@ export default function Home() {
                 margin: "0 0 18px",
               }}
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Image
                 src="/images/alexandre-carneado.jpg"
                 alt="Alexandre Carneado, fondateur de SHIFT"
-                style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+                fill
+                sizes="88px"
+                style={{ objectFit: "cover" }}
               />
             </div>
             <p

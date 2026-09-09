@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import DeclicTimeline from "@/components/DeclicTimeline";
@@ -69,13 +70,12 @@ export default function LeDeclic() {
             padding: "clamp(28px,4vw,40px) clamp(28px,4vw,36px) clamp(32px,4.5vw,40px)",
           }}
         >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <Image
             src="/images/alexandre-carneado.jpg"
             alt="Alexandre Carneado"
+            width={280}
+            height={339}
             style={{
-              width: 280,
-              height: 339,
               objectFit: "cover",
               borderRadius: 20,
               float: "left",
