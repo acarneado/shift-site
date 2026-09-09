@@ -1,5 +1,6 @@
 import { Lora, IBM_Plex_Sans } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { SITE_URL, SHARE_TITLE, SHARE_DESCRIPTION, pageOpenGraph, pageTwitter } from "@/lib/site";
 import "./globals.css";
 
@@ -40,6 +41,7 @@ export default function RootLayout({ children }) {
       <body>
         {children}
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
