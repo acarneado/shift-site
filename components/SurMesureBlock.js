@@ -13,7 +13,6 @@ export default function SurMesureBlock({ heading, body }) {
           display: "flex",
           gap: 20,
           alignItems: "flex-start",
-          maxWidth: 760,
         }}
       >
         <div
