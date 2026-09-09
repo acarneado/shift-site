@@ -90,7 +90,7 @@ export default function Accompagnements() {
                 flexShrink: 0,
               }}
             >
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.4">
+              <svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.4">
                 <circle cx="9" cy="9" r="5.5"></circle>
               </svg>
             </div>
@@ -105,20 +105,20 @@ export default function Accompagnements() {
           </p>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginTop: 22 }}>
             <Tag>
-              <svg width="15" height="15" viewBox="0 0 18 18" fill="none" stroke="var(--primary)" strokeWidth="1.4" style={{ flexShrink: 0 }}>
+              <svg aria-hidden="true" width="15" height="15" viewBox="0 0 18 18" fill="none" stroke="var(--primary)" strokeWidth="1.4" style={{ flexShrink: 0 }}>
                 <circle cx="9" cy="9" r="6.2"></circle><line x1="9" y1="5.5" x2="9" y2="9"></line><line x1="9" y1="9" x2="11.6" y2="10.6"></line>
               </svg>
               <span style={{ fontSize: 13, lineHeight: 1.3 }}>Séance unique ou jusqu&apos;à 12 séances</span>
             </Tag>
             <Tag>
-              <svg width="15" height="15" viewBox="0 0 18 18" fill="none" stroke="var(--primary)" strokeWidth="1.4" style={{ flexShrink: 0 }}>
+              <svg aria-hidden="true" width="15" height="15" viewBox="0 0 18 18" fill="none" stroke="var(--primary)" strokeWidth="1.4" style={{ flexShrink: 0 }}>
                 <path d="M8.5 3H4a1 1 0 0 0-1 1v4.5a1 1 0 0 0 .3.7l7 7a1 1 0 0 0 1.4 0l4.5-4.5a1 1 0 0 0 0-1.4l-7-7a1 1 0 0 0-.7-.3Z"></path>
                 <circle cx="6.3" cy="6.3" r="0.9" fill="var(--primary)" stroke="none"></circle>
               </svg>
               <span style={{ fontSize: 13, lineHeight: 1.3 }}>Tarif défini selon l&apos;accompagnement</span>
             </Tag>
             <Tag accent>
-              <svg width="15" height="15" viewBox="0 0 18 18" fill="currentColor" stroke="none" style={{ flexShrink: 0, color: "var(--accent)" }}>
+              <svg aria-hidden="true" width="15" height="15" viewBox="0 0 18 18" fill="currentColor" stroke="none" style={{ flexShrink: 0, color: "var(--accent)" }}>
                 <path d="M9 2c0 3.9 1.1 5 5 5-3.9 0-5 1.1-5 5 0-3.9-1.1-5-5-5 3.9 0 5-1.1 5-5Z"></path>
               </svg>
               <span style={{ fontSize: 13, lineHeight: 1.3, color: "var(--accent-text)" }}>Approche théâtrale en option</span>
@@ -160,7 +160,7 @@ export default function Accompagnements() {
                 flexShrink: 0,
               }}
             >
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.4">
+              <svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.4">
                 <circle cx="7" cy="9" r="4.5"></circle><circle cx="11.5" cy="9" r="4.5"></circle>
               </svg>
             </div>
@@ -175,20 +175,20 @@ export default function Accompagnements() {
           </p>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginTop: 22 }}>
             <Tag bg="var(--card)">
-              <svg width="15" height="15" viewBox="0 0 18 18" fill="none" stroke="var(--primary)" strokeWidth="1.4" style={{ flexShrink: 0 }}>
+              <svg aria-hidden="true" width="15" height="15" viewBox="0 0 18 18" fill="none" stroke="var(--primary)" strokeWidth="1.4" style={{ flexShrink: 0 }}>
                 <circle cx="9" cy="9" r="6.2"></circle><line x1="9" y1="5.5" x2="9" y2="9"></line><line x1="9" y1="9" x2="11.6" y2="10.6"></line>
               </svg>
               <span style={{ fontSize: 13, lineHeight: 1.3 }}>De 1h30 à une journée</span>
             </Tag>
             <Tag bg="var(--card)">
-              <svg width="15" height="15" viewBox="0 0 18 18" fill="none" stroke="var(--primary)" strokeWidth="1.4" style={{ flexShrink: 0 }}>
+              <svg aria-hidden="true" width="15" height="15" viewBox="0 0 18 18" fill="none" stroke="var(--primary)" strokeWidth="1.4" style={{ flexShrink: 0 }}>
                 <path d="M8.5 3H4a1 1 0 0 0-1 1v4.5a1 1 0 0 0 .3.7l7 7a1 1 0 0 0 1.4 0l4.5-4.5a1 1 0 0 0 0-1.4l-7-7a1 1 0 0 0-.7-.3Z"></path>
                 <circle cx="6.3" cy="6.3" r="0.9" fill="var(--primary)" stroke="none"></circle>
               </svg>
               <span style={{ fontSize: 13, lineHeight: 1.3 }}>Tarif défini selon le format</span>
             </Tag>
             <Tag accent>
-              <svg width="15" height="15" viewBox="0 0 18 18" fill="currentColor" stroke="none" style={{ flexShrink: 0, color: "var(--accent)" }}>
+              <svg aria-hidden="true" width="15" height="15" viewBox="0 0 18 18" fill="currentColor" stroke="none" style={{ flexShrink: 0, color: "var(--accent)" }}>
                 <path d="M9 2c0 3.9 1.1 5 5 5-3.9 0-5 1.1-5 5 0-3.9-1.1-5-5-5 3.9 0 5-1.1 5-5Z"></path>
               </svg>
               <span style={{ fontSize: 13, lineHeight: 1.3, color: "var(--accent-text)" }}>Approche théâtrale en option</span>
@@ -229,7 +229,7 @@ export default function Accompagnements() {
                 flexShrink: 0,
               }}
             >
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.4">
+              <svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.4">
                 <rect x="5" y="5" width="8" height="8" transform="rotate(45 9 9)"></rect>
               </svg>
             </div>
@@ -248,13 +248,13 @@ export default function Accompagnements() {
           </p>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginTop: 22 }}>
             <Tag>
-              <svg width="15" height="15" viewBox="0 0 18 18" fill="none" stroke="var(--primary)" strokeWidth="1.4" style={{ flexShrink: 0 }}>
+              <svg aria-hidden="true" width="15" height="15" viewBox="0 0 18 18" fill="none" stroke="var(--primary)" strokeWidth="1.4" style={{ flexShrink: 0 }}>
                 <circle cx="9" cy="9" r="6.2"></circle><line x1="9" y1="5.5" x2="9" y2="9"></line><line x1="9" y1="9" x2="11.6" y2="10.6"></line>
               </svg>
               <span style={{ fontSize: 13, lineHeight: 1.3 }}>1h30 minimum</span>
             </Tag>
             <Tag>
-              <svg width="15" height="15" viewBox="0 0 18 18" fill="none" stroke="var(--primary)" strokeWidth="1.4" style={{ flexShrink: 0 }}>
+              <svg aria-hidden="true" width="15" height="15" viewBox="0 0 18 18" fill="none" stroke="var(--primary)" strokeWidth="1.4" style={{ flexShrink: 0 }}>
                 <path d="M8.5 3H4a1 1 0 0 0-1 1v4.5a1 1 0 0 0 .3.7l7 7a1 1 0 0 0 1.4 0l4.5-4.5a1 1 0 0 0 0-1.4l-7-7a1 1 0 0 0-.7-.3Z"></path>
                 <circle cx="6.3" cy="6.3" r="0.9" fill="var(--primary)" stroke="none"></circle>
               </svg>
