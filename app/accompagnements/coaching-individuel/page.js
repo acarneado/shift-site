@@ -12,26 +12,75 @@ export const metadata = {
   twitter: pageTwitter({ image: "/images/og/coaching-individuel.jpg" }),
 };
 
-const CE_QUON_TRAITE = [
-  "Vous prenez un nouveau poste ou de nouvelles responsabilités",
-  "Vous cherchez une posture, une manière de manager qui vous ressemble",
-  "Vous voulez renforcer votre confiance et votre légitimité",
-  "Vous cherchez à prendre votre place dans une équipe ou une organisation",
-  "Vous traversez une période de changement",
-  "Vous cherchez à clarifier ce que vous voulez vraiment",
-  "Vous voulez retrouver du sens dans votre activité professionnelle",
-  "Vous voulez mieux comprendre vos besoins et poser vos limites",
-  "Vous voulez sortir de certains schémas ou croyances qui vous freinent",
-  "Vous voulez passer de la réflexion à l'action",
+const CLUSTERS = [
+  {
+    title: "Gestion du stress",
+    items: ["Gérer les pics de charge et la pression", "Poser des limites saines", "Retrouver de l'énergie durablement"],
+  },
+  {
+    title: "Gestion des conflits",
+    items: [
+      "Désamorcer une tension avant qu'elle ne s'installe",
+      "Exprimer un désaccord sans le subir",
+      "Sortir d'une relation professionnelle difficile",
+    ],
+  },
+  {
+    title: "Prise de parole & posture",
+    items: ["S'exprimer avec aisance face à un groupe", "Trouver sa posture dans un nouveau rôle", "Défendre une idée sans se justifier"],
+  },
+  {
+    title: "Légitimité et confiance",
+    items: ["Dépasser le syndrome de l'imposteur", "Affirmer sa place dans une équipe", "Assumer ses décisions"],
+  },
+  {
+    title: "Sens & alignement",
+    items: ["Clarifier ce qui compte vraiment", "Réconcilier ses valeurs et sa réalité professionnelle", "Redonner du sens à son quotidien"],
+  },
+  {
+    title: "Changement & transition",
+    items: ["Prendre un nouveau poste ou de nouvelles responsabilités", "Traverser une réorganisation", "Anticiper une décision de carrière"],
+  },
 ];
 
-const BENEFICES = [
-  "Prendre du recul sur sa situation",
-  "Adopter une posture plus alignée",
-  "Prendre des décisions mieux étayées",
-  "Clarifier ses besoins et ses limites",
-  "Renforcer sa capacité à agir",
-  "Évoluer dans un espace confidentiel, à son rythme",
+const APPROACH_TILES = [
+  {
+    title: "Premier échange",
+    text: "Cadrer ensemble votre demande, sans engagement",
+    bg: "var(--primary-wash)",
+    color: "var(--primary)",
+    icon: (
+      <svg width="16" height="16" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.4">
+        <circle cx="5" cy="9" r="2.3" />
+        <circle cx="13" cy="9" r="2.3" />
+        <line x1="7.3" y1="9" x2="10.7" y2="9" />
+      </svg>
+    ),
+  },
+  {
+    title: "Format des séances",
+    text: "1h à 1h30, séance unique ou jusqu'à 12, à votre rythme",
+    bg: "var(--primary-wash)",
+    color: "var(--primary)",
+    icon: (
+      <svg width="16" height="16" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.4">
+        <circle cx="9" cy="9" r="6.2" />
+        <line x1="9" y1="5.5" x2="9" y2="9" />
+        <line x1="9" y1="9" x2="11.6" y2="10.6" />
+      </svg>
+    ),
+  },
+  {
+    title: "Une dimension incarnée",
+    text: "Selon la situation et votre disposition à vous y prêter, certains outils s'appuient sur des techniques théâtrales",
+    bg: "oklch(0.62 0.10 40 / 0.14)",
+    color: "var(--accent)",
+    icon: (
+      <svg width="16" height="16" viewBox="0 0 18 18" fill="currentColor" stroke="none">
+        <path d="M9 2c0 3.9 1.1 5 5 5-3.9 0-5 1.1-5 5 0-3.9-1.1-5-5-5 3.9 0 5-1.1 5-5Z" />
+      </svg>
+    ),
+  },
 ];
 
 const TESTIMONIALS = [
@@ -58,7 +107,7 @@ export default function CoachingIndividuel() {
     >
       <Header />
 
-      <section style={{ padding: "clamp(28px,4vw,48px) clamp(20px,6vw,64px) 24px" }}>
+      <section style={{ padding: "clamp(28px,4vw,48px) clamp(20px,6vw,64px) 28px" }}>
         <Link
           href="/accompagnements"
           style={{ display: "inline-block", fontSize: 13, color: "var(--muted)", borderBottom: "1px solid var(--border)", margin: "0 0 20px" }}
@@ -84,53 +133,94 @@ export default function CoachingIndividuel() {
         </p>
       </section>
 
-      <section style={{ padding: "16px clamp(20px,6vw,64px) 48px", display: "flex", flexWrap: "wrap", gap: 40 }}>
-        <div style={{ flex: "1 1 320px", borderLeft: "2px solid var(--accent)", paddingLeft: 20 }}>
-          <p style={{ fontSize: 13, letterSpacing: "1.5px", textTransform: "uppercase", color: "var(--muted)", margin: "0 0 16px" }}>
-            Ce qu&apos;on y traite
-          </p>
-          <ul style={{ fontSize: 15, lineHeight: 1.6, margin: 0, padding: 0, listStyle: "none", display: "flex", flexDirection: "column", gap: 12 }}>
-            {CE_QUON_TRAITE.map((item) => (
-              <li key={item} style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
-                <span style={{ width: 7, height: 7, minWidth: 7, borderRadius: "50%", background: "var(--accent)", marginTop: 7 }}></span>
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div style={{ flex: "1 1 320px", borderLeft: "2px solid var(--primary)", paddingLeft: 20 }}>
-          <p style={{ fontSize: 13, letterSpacing: "1.5px", textTransform: "uppercase", color: "var(--muted)", margin: "0 0 16px" }}>
-            Les bénéfices
-          </p>
-          <ul style={{ fontSize: 16, lineHeight: 1.65, margin: 0, padding: 0, listStyle: "none", display: "flex", flexDirection: "column", gap: 12 }}>
-            {BENEFICES.map((item) => (
-              <li key={item} style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
-                <span style={{ width: 7, height: 7, minWidth: 7, borderRadius: "50%", background: "var(--primary)", marginTop: 8 }}></span>
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      <section style={{ padding: "8px clamp(20px,6vw,64px) 64px" }}>
-        <div style={{ background: "var(--card)", border: "1px solid var(--border)", borderRadius: 20, padding: "clamp(32px,5vw,48px)" }}>
-          <p style={{ fontSize: 13, letterSpacing: "1.5px", textTransform: "uppercase", color: "var(--muted)", margin: "0 0 20px" }}>
-            Comment ça se déroule
-          </p>
-          <p style={{ fontSize: 16, lineHeight: 1.7, margin: "0 0 16px", maxWidth: 600 }}>
-            Un premier échange permet de cadrer la demande. Selon le besoin, l&apos;accompagnement peut
-            prendre la forme d&apos;une séance unique de 1h à 1h30, ou s&apos;inscrire dans un processus plus
-            long, jusqu&apos;à 12 séances, à un rythme adapté à la situation de chacun.
-          </p>
-          <p style={{ fontSize: 16, lineHeight: 1.7, margin: 0, maxWidth: 600 }}>
-            Selon la sensibilité de la personne, certains outils peuvent s&apos;appuyer sur des techniques
-            théâtrales, pour explorer une posture avant de la choisir.
-          </p>
+      <section style={{ padding: "0 clamp(20px,6vw,64px) 40px" }}>
+        <p style={{ fontSize: 13, letterSpacing: "1.5px", textTransform: "uppercase", color: "var(--muted)", margin: "0 0 20px" }}>
+          Ce qu&apos;on y traite
+        </p>
+        <div className="ci-cluster-grid">
+          {CLUSTERS.map((cluster) => (
+            <div
+              key={cluster.title}
+              className="card-hover-lg"
+              style={{ border: "1px solid var(--border)", borderRadius: 16, padding: "24px 26px", transition: "all 0.2s ease" }}
+            >
+              <h3 style={{ fontFamily: "var(--font-lora), serif", fontWeight: 500, fontSize: 19, margin: "0 0 14px", color: "var(--primary)" }}>
+                {cluster.title}
+              </h3>
+              <ul
+                style={{
+                  fontSize: 14.5,
+                  lineHeight: 1.6,
+                  margin: 0,
+                  padding: 0,
+                  listStyle: "none",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 8,
+                  color: "oklch(0.4 0.02 50)",
+                }}
+              >
+                {cluster.items.map((item) => (
+                  <li key={item} style={{ display: "flex", gap: 8, alignItems: "flex-start" }}>
+                    <span style={{ width: 6, height: 6, minWidth: 6, borderRadius: "50%", background: "var(--accent)", marginTop: 7 }}></span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
       </section>
 
-      <section style={{ padding: "0 clamp(20px,6vw,64px) 88px" }}>
+      <section style={{ padding: "0 clamp(20px,6vw,64px) 40px" }}>
+        <div style={{ background: "var(--card)", border: "1px solid var(--border)", borderRadius: 20, padding: "clamp(28px,4vw,40px)" }}>
+          <p style={{ fontSize: 13, letterSpacing: "1.5px", textTransform: "uppercase", color: "var(--muted)", margin: "0 0 16px" }}>
+            Mon approche
+          </p>
+          <p
+            style={{
+              fontFamily: "var(--font-lora), serif",
+              fontWeight: 600,
+              fontSize: 20,
+              lineHeight: 1.4,
+              margin: "0 0 24px",
+              color: "var(--primary)",
+              maxWidth: 520,
+            }}
+          >
+            Créer le cadre pour que vous trouviez vos propres réponses.
+          </p>
+          <div className="ci-approach-grid">
+            {APPROACH_TILES.map((tile) => (
+              <div key={tile.title} style={{ display: "flex", gap: 14, alignItems: "flex-start" }}>
+                <div
+                  style={{
+                    width: 34,
+                    height: 34,
+                    borderRadius: 999,
+                    background: tile.bg,
+                    color: tile.color,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    flexShrink: 0,
+                  }}
+                >
+                  {tile.icon}
+                </div>
+                <div>
+                  <p style={{ fontFamily: "var(--font-lora), serif", fontWeight: 500, fontSize: 15.5, margin: "0 0 4px", color: "var(--text)" }}>
+                    {tile.title}
+                  </p>
+                  <p style={{ fontSize: 14, lineHeight: 1.5, margin: 0, color: "var(--muted)" }}>{tile.text}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section style={{ padding: "0 clamp(20px,6vw,64px) 40px" }}>
         <div
           style={{
             background: "var(--primary)",
@@ -157,7 +247,7 @@ export default function CoachingIndividuel() {
         </div>
       </section>
 
-      <section style={{ padding: "0 clamp(20px,6vw,64px) 72px", overflow: "hidden" }}>
+      <section style={{ padding: "0 clamp(20px,6vw,64px) 56px", overflow: "hidden" }}>
         <p style={{ fontSize: 13, letterSpacing: "1.5px", textTransform: "uppercase", color: "var(--muted)", margin: "0 0 20px" }}>
           Témoignages
         </p>

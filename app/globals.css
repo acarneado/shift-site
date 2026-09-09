@@ -159,6 +159,27 @@ textarea::placeholder {
   }
 }
 
+/* Coaching individuel: "Ce qu'on y traite" / "Mon approche" grids */
+.ci-cluster-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+.ci-approach-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+@media (min-width: 680px) {
+  .ci-cluster-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .ci-approach-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 /* Diagnostic step transition */
 @keyframes dqFade {
   from {
