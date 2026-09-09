@@ -169,6 +169,7 @@ export default function DiagnosticApp() {
     const selected = state.theme === c.id;
     return {
       ...c,
+      selected,
       select: () => selectTheme(c.id),
       bg: selected ? "oklch(0.93 0.025 40)" : "var(--card)",
       border: selected ? "var(--accent)" : "transparent",
@@ -307,6 +308,7 @@ export default function DiagnosticApp() {
                     key={c.id}
                     onClick={c.select}
                     className="card-hover"
+                    aria-pressed={c.selected}
                     style={{
                       textAlign: "left",
                       background: c.bg,

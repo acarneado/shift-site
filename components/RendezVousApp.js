@@ -174,13 +174,14 @@ export default function RendezVousApp() {
             <label style={{ display: "block", fontSize: 13, color: "var(--muted)", margin: "0 0 6px" }}>
               Vous êtes <span style={{ opacity: 0.6 }}>(facultatif)</span>
             </label>
-            <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+            <div role="group" aria-label="Vous êtes" style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
               {profiles.map((p) => (
                 <button
                   key={p.label}
                   type="button"
                   onClick={p.select}
                   className="pill-select"
+                  aria-pressed={p.isActive}
                   style={{
                     borderRadius: 999,
                     padding: "10px 18px",
@@ -201,13 +202,14 @@ export default function RendezVousApp() {
             <label style={{ display: "block", fontSize: 13, color: "var(--muted)", margin: "0 0 6px" }}>
               Votre demande concerne <span style={{ opacity: 0.6 }}>(facultatif)</span>
             </label>
-            <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+            <div role="group" aria-label="Votre demande concerne" style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
               {interests.map((i) => (
                 <button
                   key={i.label}
                   type="button"
                   onClick={i.select}
                   className="pill-select"
+                  aria-pressed={i.isActive}
                   style={{
                     borderRadius: 999,
                     padding: "10px 18px",
