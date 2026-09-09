@@ -43,7 +43,9 @@ a {
 
 input::placeholder,
 textarea::placeholder {
-  color: oklch(0.6 0.01 50);
+  /* oklch(0.6 0.01 50) ne donnait que 3,63:1 sur --bg, sous le seuil AA
+     (4,5:1) — 0.52 remonte à ~5:1 tout en restant visuellement un placeholder. */
+  color: oklch(0.52 0.01 50);
 }
 
 /* Nav links */
