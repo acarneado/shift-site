@@ -113,6 +113,8 @@ export default function Header() {
           <button
             onClick={() => setMenuOpen((open) => !open)}
             aria-label="Menu"
+            aria-expanded={menuOpen}
+            aria-controls="mobile-nav"
             style={{
               background: "none",
               border: "1px solid var(--border)",
@@ -139,6 +141,7 @@ export default function Header() {
 
       {menuAndMobile && (
         <nav
+          id="mobile-nav"
           style={{
             position: "absolute",
             top: "100%",
