@@ -236,6 +236,15 @@ textarea::placeholder {
   border: 3px solid var(--bg);
   box-shadow: 0 0 0 1px var(--primary);
 }
+/* outline:none ci-dessus supprimait le focus par défaut du navigateur sans
+   rien pour le remplacer — invisible au clavier. Remplacé par un halo
+   visible autour du curseur. */
+.dq-range:focus-visible::-webkit-slider-thumb {
+  box-shadow: 0 0 0 1px var(--primary), 0 0 0 5px var(--primary-wash);
+}
+.dq-range:focus-visible::-moz-range-thumb {
+  box-shadow: 0 0 0 1px var(--primary), 0 0 0 5px var(--primary-wash);
+}
 .dq-range::-moz-range-thumb {
   width: 22px;
   height: 22px;
