@@ -16,6 +16,15 @@ export default function HeroTrace({ children }) {
   const [svgHeight, setSvgHeight] = useState(480);
   const [pathLength, setPathLength] = useState(0);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+
+  useEffect(() => {
+    // matchMedia is unavailable during the static prerender; checking it
+    // post-mount (rather than a lazy useState initializer) avoids an
+    // SSR/CSR hydration mismatch, same pattern as TestimonialCarousel.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setPrefersReducedMotion(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  }, []);
 
   useEffect(() => {
     const measurePath = () => {
@@ -103,50 +112,57 @@ export default function HeroTrace({ children }) {
           strokeDashoffset={dashOffset}
         ></path>
         <path id="hero-dot-trace" d={heroDotPathD} opacity="0" fill="none"></path>
-        <circle r="3.5" fill="oklch(0.62 0.10 40 / 0.35)">
-          <animateMotion dur="19s" repeatCount="indefinite" rotate="0">
-            <mpath href="#hero-dot-trace"></mpath>
-          </animateMotion>
-          <animate
-            attributeName="opacity"
-            values="0;1;1;0"
-            keyTimes="0;0.12;0.85;1"
-            dur="19s"
-            repeatCount="indefinite"
-            calcMode="spline"
-            keySplines="0.4 0 0.6 1;0.4 0 0.6 1;0.4 0 0.6 1"
-          ></animate>
-        </circle>
-        <circle r="3" fill="oklch(0.62 0.10 40 / 0.35)">
-          <animateMotion dur="24s" begin="-7s" repeatCount="indefinite" rotate="0">
-            <mpath href="#hero-dot-trace"></mpath>
-          </animateMotion>
-          <animate
-            attributeName="opacity"
-            values="0;1;1;0"
-            keyTimes="0;0.12;0.85;1"
-            dur="24s"
-            begin="-7s"
-            repeatCount="indefinite"
-            calcMode="spline"
-            keySplines="0.4 0 0.6 1;0.4 0 0.6 1;0.4 0 0.6 1"
-          ></animate>
-        </circle>
-        <circle r="4" fill="oklch(0.62 0.10 40 / 0.35)">
-          <animateMotion dur="21s" begin="-13s" repeatCount="indefinite" rotate="0">
-            <mpath href="#hero-dot-trace"></mpath>
-          </animateMotion>
-          <animate
-            attributeName="opacity"
-            values="0;1;1;0"
-            keyTimes="0;0.12;0.85;1"
-            dur="21s"
-            begin="-13s"
-            repeatCount="indefinite"
-            calcMode="spline"
-            keySplines="0.4 0 0.6 1;0.4 0 0.6 1;0.4 0 0.6 1"
-          ></animate>
-        </circle>
+        {/* Points en mouvement perpétuel (indépendants du scroll) : seule
+            partie réellement concernée par prefers-reduced-motion — le
+            tracé du dessus, lui, ne bouge qu'avec le scroll de l'utilisateur. */}
+        {!prefersReducedMotion && (
+          <>
+            <circle r="3.5" fill="oklch(0.62 0.10 40 / 0.35)">
+              <animateMotion dur="19s" repeatCount="indefinite" rotate="0">
+                <mpath href="#hero-dot-trace"></mpath>
+              </animateMotion>
+              <animate
+                attributeName="opacity"
+                values="0;1;1;0"
+                keyTimes="0;0.12;0.85;1"
+                dur="19s"
+                repeatCount="indefinite"
+                calcMode="spline"
+                keySplines="0.4 0 0.6 1;0.4 0 0.6 1;0.4 0 0.6 1"
+              ></animate>
+            </circle>
+            <circle r="3" fill="oklch(0.62 0.10 40 / 0.35)">
+              <animateMotion dur="24s" begin="-7s" repeatCount="indefinite" rotate="0">
+                <mpath href="#hero-dot-trace"></mpath>
+              </animateMotion>
+              <animate
+                attributeName="opacity"
+                values="0;1;1;0"
+                keyTimes="0;0.12;0.85;1"
+                dur="24s"
+                begin="-7s"
+                repeatCount="indefinite"
+                calcMode="spline"
+                keySplines="0.4 0 0.6 1;0.4 0 0.6 1;0.4 0 0.6 1"
+              ></animate>
+            </circle>
+            <circle r="4" fill="oklch(0.62 0.10 40 / 0.35)">
+              <animateMotion dur="21s" begin="-13s" repeatCount="indefinite" rotate="0">
+                <mpath href="#hero-dot-trace"></mpath>
+              </animateMotion>
+              <animate
+                attributeName="opacity"
+                values="0;1;1;0"
+                keyTimes="0;0.12;0.85;1"
+                dur="21s"
+                begin="-13s"
+                repeatCount="indefinite"
+                calcMode="spline"
+                keySplines="0.4 0 0.6 1;0.4 0 0.6 1;0.4 0 0.6 1"
+              ></animate>
+            </circle>
+          </>
+        )}
       </svg>
       {children}
     </div>
