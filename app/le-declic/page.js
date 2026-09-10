@@ -51,6 +51,7 @@ export default function LeDeclic() {
         >
           Le Déclic
         </p>
+        <span style={{ display: "block", width: 32, height: 2, background: "var(--accent)", margin: "0 0 20px" }}></span>
         <h1
           style={{
             fontFamily: "var(--font-lora), serif",

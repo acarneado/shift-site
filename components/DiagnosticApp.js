@@ -303,6 +303,7 @@ export default function DiagnosticApp() {
               <p style={{ fontSize: 13, letterSpacing: "1.5px", textTransform: "uppercase", color: "var(--primary)", margin: "0 0 20px" }}>
                 Votre situation
               </p>
+              <span style={{ display: "block", width: 32, height: 2, background: "var(--accent)", margin: "0 0 20px" }}></span>
               <h1 style={{ fontFamily: "var(--font-lora), serif", fontWeight: 500, fontSize: "clamp(28px,4vw,38px)", lineHeight: 1.25, margin: "0 0 20px" }}>
                 Un point sur votre situation, en une minute.
               </h1>

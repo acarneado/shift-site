@@ -29,6 +29,7 @@ export default function RendezVous() {
         <p style={{ fontSize: 13, letterSpacing: "1.5px", textTransform: "uppercase", color: "var(--primary)", margin: "0 0 20px" }}>
           Prendre rendez-vous
         </p>
+        <span style={{ display: "block", width: 32, height: 2, background: "var(--accent)", margin: "0 0 20px" }}></span>
         <h1 style={{ fontFamily: "var(--font-lora), serif", fontWeight: 500, fontSize: "clamp(30px,4.5vw,46px)", lineHeight: 1.2, margin: "0 0 20px", maxWidth: 640 }}>
           Ce n&apos;est pas un engagement, juste un premier échange.
         </h1>
