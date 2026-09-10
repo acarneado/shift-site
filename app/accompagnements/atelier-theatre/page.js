@@ -7,7 +7,7 @@ import { pageOpenGraph, pageTwitter, pageCanonical } from "@/lib/site";
 import { TESTIMONIALS as T } from "@/lib/testimonials";
 
 export const metadata = {
-  title: "Atelier théâtre en entreprise — SHIFT",
+  title: "Atelier théâtre en entreprise | SHIFT",
   description:
     "Pour des équipes en entreprise, dans les locaux fournis par l'entreprise. Sortir des automatismes et expérimenter une autre posture, dans un cadre concret.",
   openGraph: pageOpenGraph({ routePath: "/accompagnements/atelier-theatre", image: "/images/og/atelier-theatre.jpg" }),

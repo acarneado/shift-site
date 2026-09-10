@@ -9,7 +9,7 @@ import { pageOpenGraph, pageTwitter, pageCanonical } from "@/lib/site";
 import { TESTIMONIALS as T } from "@/lib/testimonials";
 
 export const metadata = {
-  title: "Coaching individuel — SHIFT",
+  title: "Coaching individuel | SHIFT",
   description:
     "Prise de poste, changement de rôle, sentiment de manque de légitimité, quête de sens : un accompagnement individuel pour avancer sur sa propre situation, à son rythme.",
   openGraph: pageOpenGraph({ routePath: "/accompagnements/coaching-individuel", image: "/images/og/coaching-individuel.jpg" }),

@@ -4,7 +4,7 @@ import RendezVousApp from "@/components/RendezVousApp";
 import { pageOpenGraph, pageTwitter, pageCanonical } from "@/lib/site";
 
 export const metadata = {
-  title: "Prendre rendez-vous — SHIFT",
+  title: "Prendre rendez-vous | SHIFT",
   description:
     "Ce n'est pas un engagement, juste un premier échange. Contactez Alexandre Carneado pour clarifier votre situation.",
   openGraph: pageOpenGraph({ routePath: "/rendez-vous", image: "/images/og/rendez-vous.jpg" }),

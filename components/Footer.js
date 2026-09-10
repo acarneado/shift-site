@@ -25,7 +25,7 @@ export default function Footer() {
             opacity: 0.75,
           }}
         >
-          <span>Coaching certifié — RNCP niveau 6</span>
+          <span>Coaching certifié RNCP niveau 6</span>
           <a
             href="mailto:acarneado.shift@gmail.com"
             className="footer-link"
@@ -36,7 +36,7 @@ export default function Footer() {
             href="https://www.linkedin.com/in/alexandre-carneado/"
             target="_blank"
             rel="noopener"
-            aria-label="LinkedIn — Alexandre Carneado"
+            aria-label="Profil LinkedIn d'Alexandre Carneado"
             className="footer-link"
             style={{ display: "flex", alignItems: "center" }}
           >

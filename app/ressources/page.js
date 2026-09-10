@@ -4,7 +4,7 @@ import RessourcesApp from "@/components/RessourcesApp";
 import { pageOpenGraph, pageTwitter, pageCanonical } from "@/lib/site";
 
 export const metadata = {
-  title: "Ressources — SHIFT",
+  title: "Ressources | SHIFT",
   description: "Articles sur la posture professionnelle, la légitimité, la prise de parole et le management.",
   openGraph: pageOpenGraph({ routePath: "/ressources", image: "/images/og/ressources.jpg" }),
   twitter: pageTwitter({ image: "/images/og/ressources.jpg" }),

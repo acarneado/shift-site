@@ -7,7 +7,7 @@ import ApproachSection from "@/components/ApproachSection";
 import { pageOpenGraph, pageTwitter, pageCanonical } from "@/lib/site";
 
 export const metadata = {
-  title: "Formations — SHIFT",
+  title: "Formations | SHIFT",
   description:
     "Des formats courts pour outiller managers et équipes sur la posture managériale, la légitimité et la prise de poste, adaptés au contexte de l'entreprise.",
   openGraph: pageOpenGraph({ routePath: "/accompagnements/formations", image: "/images/og/formations.jpg" }),

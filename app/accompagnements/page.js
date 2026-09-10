@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import { pageOpenGraph, pageTwitter, pageCanonical } from "@/lib/site";
 
 export const metadata = {
-  title: "Accompagnements — SHIFT",
+  title: "Accompagnements | SHIFT",
   description:
     "Coaching individuel, formations et ateliers théâtre en entreprise : trois formats, pour des besoins différents.",
   openGraph: pageOpenGraph({ routePath: "/accompagnements", image: "/images/og/accompagnements.jpg" }),
@@ -128,7 +128,7 @@ export default function Accompagnements() {
             <Link
               href="/accompagnements/coaching-individuel"
               className="btn-pill-outline btn-pill-outline--card"
-              aria-label="Voir le détail — Coaching individuel"
+              aria-label="Voir le détail : Coaching individuel"
               style={{ display: "inline-block", padding: "10px 20px", borderRadius: 999, fontSize: 14, fontWeight: 600 }}
             >
               Voir le détail →
@@ -198,7 +198,7 @@ export default function Accompagnements() {
             <Link
               href="/accompagnements/formations"
               className="btn-pill-outline btn-pill-outline--card"
-              aria-label="Voir le détail — Formations"
+              aria-label="Voir le détail : Formations"
               style={{ display: "inline-block", padding: "10px 20px", borderRadius: 999, fontSize: 14, fontWeight: 600 }}
             >
               Voir le détail →
@@ -265,7 +265,7 @@ export default function Accompagnements() {
             <Link
               href="/accompagnements/atelier-theatre"
               className="btn-pill-outline"
-              aria-label="Voir le détail — Atelier théâtre"
+              aria-label="Voir le détail : Atelier théâtre"
               style={{ display: "inline-block", padding: "10px 20px", borderRadius: 999, fontSize: 14, fontWeight: 600 }}
             >
               Voir le détail →

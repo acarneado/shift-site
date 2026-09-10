@@ -50,10 +50,10 @@ export async function POST(request) {
 
   try {
     const { error } = await resend.emails.send({
-      from: "SHIFT — Site web <onboarding@resend.dev>",
+      from: "Site web SHIFT <onboarding@resend.dev>",
       to: TO_EMAIL,
       replyTo: trimmedEmail,
-      subject: `${subjectPrefix}Nouvelle demande de rendez-vous — ${stripNewlines(trimmedName)}`,
+      subject: `${subjectPrefix}Nouvelle demande de rendez-vous de ${stripNewlines(trimmedName)}`,
       text: [
         `Nom : ${trimmedName}`,
         `Email : ${trimmedEmail}`,

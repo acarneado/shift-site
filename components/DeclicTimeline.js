@@ -31,7 +31,7 @@ const STEPS = [
     title: "Quand le contexte change",
     icon: "triangle",
     blocks: [
-      { t: "p", text: "J'ai traversé des organisations, des secteurs et des cultures différentes — et j'ai vu à quel point le contexte pouvait influencer l'engagement et la confiance. Puis le Covid est arrivé. J'ai changé de cadre, et je me suis progressivement refermé : moins d'élan, moins d'envie de contribuer." },
+      { t: "p", text: "J'ai traversé des organisations, des secteurs et des cultures différentes, et j'ai vu à quel point le contexte pouvait influencer l'engagement et la confiance. Puis le Covid est arrivé. J'ai changé de cadre, et je me suis progressivement refermé : moins d'élan, moins d'envie de contribuer." },
       { t: "h", text: "Notre environnement ne détermine pas qui nous sommes, mais il peut profondément influencer la manière dont nous pouvons l'exprimer." },
     ],
   },

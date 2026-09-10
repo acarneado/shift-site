@@ -5,7 +5,7 @@ import DeclicTimeline from "@/components/DeclicTimeline";
 import { pageOpenGraph, pageTwitter, pageCanonical } from "@/lib/site";
 
 export const metadata = {
-  title: "Le Déclic — SHIFT",
+  title: "Le Déclic | SHIFT",
   description:
     "Le parcours d'Alexandre Carneado : dix ans en Product Management, une certification de coach RNCP niveau 6, et le déclic qui a mené à SHIFT.",
   openGraph: pageOpenGraph({ routePath: "/le-declic", image: "/images/og/le-declic.jpg" }),

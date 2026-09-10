@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Site en maintenance — SHIFT",
+  title: "Site en maintenance | SHIFT",
   description: "Le site SHIFT est temporairement indisponible.",
   robots: { index: false, follow: false },
 };

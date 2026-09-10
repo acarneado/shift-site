@@ -4,7 +4,7 @@ import DiagnosticApp from "@/components/DiagnosticApp";
 import { pageOpenGraph, pageTwitter, pageCanonical } from "@/lib/site";
 
 export const metadata = {
-  title: "Diagnostic — SHIFT",
+  title: "Diagnostic | SHIFT",
   description:
     "Un point sur votre situation, en une minute. Quelques questions simples, anonymes et sans engagement, pour voir plus clair.",
   openGraph: pageOpenGraph({ routePath: "/diagnostic", image: "/images/og/diagnostic.jpg" }),
