@@ -28,6 +28,9 @@ const OFFERINGS = [
   },
 ];
 
+// Carrousel resserré : on privilégie shortText (extrait volontaire, une
+// phrase complète de `text`) quand il existe, pour limiter la place prise
+// à l'écran — voir lib/testimonials.js.
 const TESTIMONIALS = [
   T.hugo,
   T.paulineP,
@@ -38,7 +41,7 @@ const TESTIMONIALS = [
   T.atelierAnonyme,
   T.christopherW,
   T.camilleP,
-];
+].map((t) => ({ name: t.name, text: t.shortText || t.text }));
 const ARTICLES = [
   { title: "Changer de poste sans perdre pied", tag: "Transition", time: "6 min" },
   { title: "Pourquoi le syndrome de l'imposteur revient à chaque nouveau rôle", tag: "Légitimité", time: "5 min" },
