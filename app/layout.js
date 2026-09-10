@@ -34,6 +34,7 @@ export const metadata = {
   openGraph: pageOpenGraph({ routePath: "/", image: "/images/og/accueil.jpg" }),
   twitter: pageTwitter({ image: "/images/og/accueil.jpg" }),
   alternates: pageCanonical("/"),
+  verification: { google: "229T0URrc2wZGbE8X89Z9-UsYbbk2mCpwpSSA5AQYYU" },
 };
 
 export default function RootLayout({ children }) {
