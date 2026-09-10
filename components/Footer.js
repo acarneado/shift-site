@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ShiftLogo from "./ShiftLogo";
 
 export default function Footer() {
   return (
@@ -11,6 +12,10 @@ export default function Footer() {
         padding: "22px clamp(20px,6vw,64px)",
       }}
     >
+      <div style={{ marginBottom: 16 }}>
+        <ShiftLogo variant="reversed" size={28} withWordmark wordmarkColor="var(--bg)" wordmarkFontSize={15} wordmarkLetterSpacing={3} />
+      </div>
+
       <div
         style={{
           display: "flex",

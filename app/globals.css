@@ -161,6 +161,18 @@ textarea::placeholder {
   }
 }
 
+/* Logo du header : symbole 34px -> 30px et signature masquée sous 680px
+   (le symbole reste lisible, le mot SHIFT seul suffit à l'identifier). */
+@media (max-width: 679px) {
+  .shift-logo-symbol {
+    width: 30px;
+    height: 30px;
+  }
+  .header-signature {
+    display: none;
+  }
+}
+
 /* Coaching individuel: "Ce qu'on y traite" / "Mon approche" grids */
 .ci-cluster-grid {
   display: grid;

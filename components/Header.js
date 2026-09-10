@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import ShiftLogo from "./ShiftLogo";
 
 const NAV_ITEMS = [
   { label: "Accueil", href: "/" },
@@ -47,34 +48,38 @@ export default function Header() {
     >
       <Link
         href="/"
+        className="link-fade"
         style={{
           display: "flex",
-          flexDirection: "column",
-          gap: 1,
-          lineHeight: 1.1,
+          alignItems: "center",
+          gap: 11,
         }}
       >
-        <span
-          style={{
-            fontFamily: "var(--font-lora), serif",
-            fontWeight: 600,
-            fontSize: 22,
-            letterSpacing: "0.5px",
-            color: "var(--primary)",
-          }}
-        >
-          SHIFT
-        </span>
-        <span
-          style={{
-            fontFamily: "var(--font-ibm-plex-sans), sans-serif",
-            fontWeight: 500,
-            fontSize: 11,
-            letterSpacing: "0.3px",
-            color: "var(--muted)",
-          }}
-        >
-          Alexandre Carneado — Coach professionnel certifié RNCP 6
+        <ShiftLogo size={34} className="shift-logo-symbol" />
+        <span style={{ display: "flex", flexDirection: "column", gap: 1, lineHeight: 1.1 }}>
+          <span
+            style={{
+              fontFamily: "var(--font-ibm-plex-sans), sans-serif",
+              fontWeight: 600,
+              fontSize: 19,
+              letterSpacing: "4px",
+              color: "var(--primary)",
+            }}
+          >
+            SHIFT
+          </span>
+          <span
+            className="header-signature"
+            style={{
+              fontFamily: "var(--font-ibm-plex-sans), sans-serif",
+              fontWeight: 500,
+              fontSize: 11,
+              letterSpacing: "0.3px",
+              color: "var(--muted)",
+            }}
+          >
+            Alexandre Carneado — Coach professionnel
+          </span>
         </span>
       </Link>
 
