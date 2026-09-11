@@ -186,29 +186,6 @@ export default function MentionsLegales() {
           Nationale de l&apos;Informatique et des Libertés (CNIL).
         </p>
 
-        <h2 style={sectionTitleStyle}>7. Historique des mises à jour</h2>
-        <ul style={listStyle}>
-          <li>
-            <strong style={{ color: "var(--text)", fontWeight: 600 }}>09/09/2026</strong> : ajout du champ
-            &quot;type de demande&quot; (coaching individuel / formation / atelier théâtre) à la liste des
-            données collectées par le formulaire de prise de rendez-vous (ce champ facultatif existait déjà
-            dans le formulaire mais n&apos;était pas encore documenté ici). Précision ajoutée que le champ
-            &quot;statut&quot; est également facultatif, pour cohérence avec le formulaire réel.
-          </li>
-          <li>
-            <strong style={{ color: "var(--text)", fontWeight: 600 }}>09/09/2026</strong> : ajout de
-            l&apos;adresse de l&apos;éditeur (19 rue Collange, 92300 Levallois-Perret), initialement omise à
-            la demande de l&apos;éditeur pour préserver la confidentialité du domicile personnel. Décision
-            revue par l&apos;éditeur. Le point de non-conformité LCEN précédemment signalé ici est donc
-            levé.
-          </li>
-          <li>
-            <strong style={{ color: "var(--text)", fontWeight: 600 }}>09/09/2026</strong> : nom de domaine
-            définitif renseigné (section 4) suite à l&apos;acquisition d&apos;alexandrecarneado.com. Le
-            point &quot;à compléter&quot; précédemment signalé ici est donc levé.
-          </li>
-        </ul>
-
         <Link href="/" style={{ display: "inline-block", marginTop: 24, fontSize: 14, fontWeight: 600, color: "var(--primary)", borderBottom: "1px solid var(--primary)" }}>
           ← Retour à l&apos;accueil
         </Link>
