@@ -177,7 +177,7 @@ export default function Formations() {
           Formations
         </h1>
         <p style={{ fontSize: 17, lineHeight: 1.65, color: "var(--muted)", margin: 0, maxWidth: 620 }}>
-          Des formats courts et concrets, pensés pour donner à vos équipes des repères communs face aux
+          Des formats concrets, pensés pour donner à vos équipes des repères communs face aux
           situations professionnelles du quotidien. Un temps collectif, adapté à votre contexte
           d&apos;entreprise, pour avancer et évoluer ensemble.
         </p>
