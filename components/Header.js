@@ -78,7 +78,7 @@ export default function Header() {
               color: "var(--muted)",
             }}
           >
-            Alexandre Carneado, coach professionnel
+            Alexandre Carneado - Coach Professionnel certifié
           </span>
         </span>
       </Link>

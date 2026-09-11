@@ -184,17 +184,17 @@ export default function AtelierTheatreScene({ children }) {
           <g id="beamR" opacity="0">
             <path d="M716 86 L440 460 L680 560 L754 78 Z" fill="url(#beamGradR)"></path>
           </g>
-          <g id="projL" stroke="currentColor" strokeWidth="1.3" fill="none" opacity="0.5">
+          <g id="projL" stroke="oklch(0.82 0.045 70)" strokeWidth="2.4" fill="none" opacity="0.9">
             <path d="M15 22 L155 22"></path>
             <path d="M68 22 L68 40"></path>
-            <path d="M52 40 L90 48 L84 86 L46 78 Z"></path>
+            <path d="M52 40 L90 48 L84 86 L46 78 Z" fill="var(--primary)"></path>
             <path d="M84 86 L98 96"></path>
             <path d="M46 78 L42 94"></path>
           </g>
-          <g id="projR" stroke="currentColor" strokeWidth="1.3" fill="none" opacity="0.5">
+          <g id="projR" stroke="oklch(0.82 0.045 70)" strokeWidth="2.4" fill="none" opacity="0.9">
             <path d="M785 22 L645 22"></path>
             <path d="M732 22 L732 40"></path>
-            <path d="M748 40 L710 48 L716 86 L754 78 Z"></path>
+            <path d="M748 40 L710 48 L716 86 L754 78 Z" fill="var(--primary)"></path>
             <path d="M716 86 L702 96"></path>
             <path d="M754 78 L758 94"></path>
           </g>

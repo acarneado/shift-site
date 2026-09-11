@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const RESUME_DELAY = 3000;
 const SPEED = 0.55; // px per frame at 60fps
@@ -8,12 +8,22 @@ const KEY_STEP = 320; // ~1 carte (300px) + gap (20px)
 
 export default function TestimonialCarousel({ testimonials }) {
   const trackRef = useRef(null);
-  const items = testimonials.concat(testimonials);
+  // La boucle infinie duplique la liste pour l'illusion de défilement continu.
+  // Avec peu de témoignages, les deux copies tiennent côte à côte dans la
+  // largeur visible et se voient comme des doublons : on ne duplique/anime
+  // donc que si le contenu dépasse réellement la largeur du conteneur.
+  const [loop, setLoop] = useState(false);
+  const items = loop ? testimonials.concat(testimonials) : testimonials;
 
   useEffect(() => {
     const track = trackRef.current;
     const scroller = track?.parentElement;
     if (!track || !scroller || !track.children.length) return;
+
+    if (!loop) {
+      setLoop(track.scrollWidth > scroller.clientWidth);
+      return;
+    }
 
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -163,7 +173,7 @@ export default function TestimonialCarousel({ testimonials }) {
       scroller.removeEventListener("keydown", onKeyDown);
       track.removeEventListener("click", onTrackClick, true);
     };
-  }, [testimonials]);
+  }, [testimonials, loop]);
 
   return (
     <div role="region" aria-label="Témoignages" tabIndex={0} style={{ overflow: "hidden" }}>
