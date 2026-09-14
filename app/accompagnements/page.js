@@ -42,6 +42,27 @@ const FAQ_ITEMS = [
     answer:
       "Le coaching individuel est un accompagnement confidentiel en tête-à-tête ; les formations s'adressent à des équipes sur des thématiques précises ; les ateliers théâtre sont un format collectif et expérientiel par le jeu.",
   },
+  {
+    question: "Combien coûte un accompagnement ?",
+    answer: "Le tarif est défini selon l'accompagnement et discuté lors du premier échange.",
+  },
+  {
+    question: "Comment se passe le premier échange ? Comment prendre rendez-vous ?",
+    answer:
+      "Via le formulaire de prise de rendez-vous du site, pour cadrer ensemble votre besoin, sans engagement.",
+  },
+  {
+    question: "Le diagnostic en ligne est-il gratuit ? Mes réponses sont-elles conservées ?",
+    answer: "Oui, il est gratuit et totalement anonyme : aucune donnée personnelle n'est collectée ni conservée.",
+  },
+  {
+    question: "Si mon besoin ne correspond à aucune thématique listée, un accompagnement sur mesure est-il possible ?",
+    answer: "Oui, un accompagnement ou une formation peut être conçu spécifiquement à partir de votre contexte et de vos objectifs.",
+  },
+  {
+    question: "Le coaching individuel est-il confidentiel ?",
+    answer: "Oui, c'est un espace confidentiel, à votre rythme.",
+  },
 ];
 
 const FAQ_JSON_LD = faqJsonLd(FAQ_ITEMS);
