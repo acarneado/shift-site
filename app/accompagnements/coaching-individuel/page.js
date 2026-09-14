@@ -5,7 +5,7 @@ import TestimonialCarousel from "@/components/TestimonialCarousel";
 import ClusterGrid from "@/components/ClusterGrid";
 import SurMesureBlock from "@/components/SurMesureBlock";
 import ApproachSection from "@/components/ApproachSection";
-import { pageOpenGraph, pageTwitter, pageCanonical } from "@/lib/site";
+import { pageOpenGraph, pageTwitter, pageCanonical, serviceJsonLd } from "@/lib/site";
 import { TESTIMONIALS as T } from "@/lib/testimonials";
 
 export const metadata = {
@@ -16,6 +16,13 @@ export const metadata = {
   twitter: pageTwitter({ image: "/images/og/coaching-individuel.jpg" }),
   alternates: pageCanonical("/accompagnements/coaching-individuel"),
 };
+
+const SERVICE_JSON_LD = serviceJsonLd({
+  name: "Coaching individuel",
+  description:
+    "Accompagnement individuel confidentiel, en séance unique ou jusqu'à 12 séances de 1h à 1h30, pour avancer sur sa situation professionnelle à son rythme.",
+  routePath: "/accompagnements/coaching-individuel",
+});
 
 const CLUSTERS = [
   {
@@ -101,6 +108,7 @@ export default function CoachingIndividuel() {
         overflowX: "hidden",
       }}
     >
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(SERVICE_JSON_LD) }} />
       <Header />
 
       <section style={{ padding: "clamp(28px,4vw,48px) clamp(20px,6vw,64px) 28px" }}>

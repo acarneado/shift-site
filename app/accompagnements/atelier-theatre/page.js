@@ -3,7 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import AtelierTheatreScene from "@/components/AtelierTheatreScene";
 import TestimonialCarousel from "@/components/TestimonialCarousel";
-import { pageOpenGraph, pageTwitter, pageCanonical } from "@/lib/site";
+import { pageOpenGraph, pageTwitter, pageCanonical, serviceJsonLd } from "@/lib/site";
 import { TESTIMONIALS as T } from "@/lib/testimonials";
 
 export const metadata = {
@@ -14,6 +14,13 @@ export const metadata = {
   twitter: pageTwitter({ image: "/images/og/atelier-theatre.jpg" }),
   alternates: pageCanonical("/accompagnements/atelier-theatre"),
 };
+
+const SERVICE_JSON_LD = serviceJsonLd({
+  name: "Atelier théâtre en entreprise",
+  description:
+    "Atelier expérientiel collectif (1h30 minimum, 6 à 12 participants), dans les locaux de l'entreprise, sans prérequis de jeu d'acteur, pour sortir des automatismes par la mise en situation théâtrale.",
+  routePath: "/accompagnements/atelier-theatre",
+});
 
 const TESTIMONIALS = [T.tristan, T.mathiasV, T.rayanR, T.paulineP, T.pierreL, T.christopherW];
 
@@ -72,6 +79,7 @@ export default function AtelierTheatre() {
         overflowX: "hidden",
       }}
     >
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(SERVICE_JSON_LD) }} />
       <Header />
 
       <AtelierTheatreScene>

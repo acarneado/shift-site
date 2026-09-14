@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import ClusterGrid from "@/components/ClusterGrid";
 import SurMesureBlock from "@/components/SurMesureBlock";
 import ApproachSection from "@/components/ApproachSection";
-import { pageOpenGraph, pageTwitter, pageCanonical } from "@/lib/site";
+import { pageOpenGraph, pageTwitter, pageCanonical, serviceJsonLd } from "@/lib/site";
 
 export const metadata = {
   title: "Formations | SHIFT",
@@ -14,6 +14,13 @@ export const metadata = {
   twitter: pageTwitter({ image: "/images/og/formations.jpg" }),
   alternates: pageCanonical("/accompagnements/formations"),
 };
+
+const SERVICE_JSON_LD = serviceJsonLd({
+  name: "Formations en entreprise",
+  description:
+    "Formats courts (1h30 à une journée) pour outiller managers et équipes sur la posture managériale, la prise de parole, la gestion du stress et la légitimité.",
+  routePath: "/accompagnements/formations",
+});
 
 const CLUSTERS = [
   {
@@ -155,6 +162,7 @@ export default function Formations() {
         overflowX: "hidden",
       }}
     >
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(SERVICE_JSON_LD) }} />
       <Header />
 
       <section style={{ padding: "clamp(28px,4vw,48px) clamp(20px,6vw,64px) 24px" }}>
