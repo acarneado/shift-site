@@ -50,6 +50,9 @@ export default function Footer() {
               <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM2.5 9.5h5V21h-5V9.5zM9.5 9.5h4.8v1.6h.07c.67-1.2 2.3-1.9 3.9-1.9 3.3 0 4.2 2 4.2 5.1V21h-5v-5.5c0-1.3-.5-2.3-1.8-2.3-1.2 0-1.9.8-1.9 2.2V21h-5V9.5z"></path>
             </svg>
           </a>
+          <Link href="/faq" className="footer-link">
+            FAQ
+          </Link>
           <Link href="/mentions-legales" className="footer-link">
             Mentions légales
           </Link>
