@@ -14,6 +14,8 @@ export default function AtelierTheatreScene({ children }) {
       const rig = g("stage-rig");
       const beamL = g("beamL");
       const beamR = g("beamR");
+      const projL = g("projL");
+      const projR = g("projR");
       const z2 = g("zone2");
       const z3 = g("zone3");
       const z4 = g("zone4");
@@ -21,6 +23,8 @@ export default function AtelierTheatreScene({ children }) {
 
       const y = window.scrollY || (document.scrollingElement ? document.scrollingElement.scrollTop : 0);
       const vh = window.innerHeight;
+      const vw = window.innerWidth;
+      const mobile = vw < 768;
 
       const hdr = document.querySelector("header");
       const rigEl = document.getElementById("stage-rig");
@@ -30,20 +34,81 @@ export default function AtelierTheatreScene({ children }) {
       const riseStart = 0;
       const riseEnd = pageTop(z2) + z2.offsetHeight * 0.55;
       const riseP = clamp01((y - riseStart) / Math.max(1, riseEnd - riseStart));
-      curtainL.style.transform = "translateX(" + -riseP * 260 + "px)";
-      curtainR.style.transform = "translateX(" + riseP * 260 + "px)";
+
+      // Mobile : le viewBox 800x600 en "slice" coupe les côtés en portrait,
+      // ce qui rendait rideaux et projecteurs invisibles (repérés hors
+      // champ). On les ramène dans la bande visible plutôt que de changer
+      // le balisage SVG, qui reste identique aux deux formats.
+      const cropOf = (h) => {
+        const s = Math.max(vw / 800, h / 600);
+        return Math.max(0, (800 - vw / s) / 2);
+      };
+
+      if (mobile) {
+        const cx = cropOf(vh);
+        curtainL.style.transform = "translateX(" + (cx - 78 - riseP * 95) + "px)";
+        curtainR.style.transform = "translateX(" + (-cx + 78 + riseP * 95) + "px)";
+      } else {
+        curtainL.style.transform = "translateX(" + -riseP * 260 + "px)";
+        curtainR.style.transform = "translateX(" + riseP * 260 + "px)";
+      }
+
+      if (projL && projR && beamL && beamR) {
+        if (mobile) {
+          const rh = vh - (hdr ? hdr.offsetHeight : 0);
+          const cx = cropOf(rh);
+          const k = Math.min(1, Math.max(0.6, ((800 - 2 * cx) / 800) * 1.8));
+          const tL = "translate(" + (cx + 4) + " 0) scale(" + k + ")";
+          const tR = "translate(" + (800 * (1 - k) - cx - 4) + " 0) scale(" + k + ")";
+          projL.setAttribute("transform", tL);
+          beamL.setAttribute("transform", tL);
+          projR.setAttribute("transform", tR);
+          beamR.setAttribute("transform", tR);
+          [projL, projR].forEach((p) => {
+            p.setAttribute("opacity", "1");
+            p.setAttribute("stroke-width", "3.4");
+            p.setAttribute("stroke-linejoin", "round");
+          });
+        } else {
+          [projL, projR, beamL, beamR].forEach((el) => el.removeAttribute("transform"));
+          [projL, projR].forEach((p) => {
+            p.setAttribute("opacity", "0.9");
+            p.setAttribute("stroke-width", "2.4");
+            p.removeAttribute("stroke-linejoin");
+          });
+        }
+        // Armature horizontale : part du bord de l'écran et s'arrête à la
+        // tige de la lampe sur mobile, pour ne plus traverser le texte.
+        [projL, projR].forEach((p) => {
+          const armature = p.querySelectorAll("path")[0];
+          if (!armature) return;
+          const left = p.id === "projL";
+          armature.setAttribute(
+            "d",
+            mobile ? (left ? "M-60 22 L68 22" : "M860 22 L732 22") : left ? "M15 22 L155 22" : "M785 22 L645 22"
+          );
+        });
+      }
 
       const st = pageTop(z3);
       const local = clamp01(((y - st + vh * 0.55) / Math.max(1, vh)) * 1.6);
       const zone4Top = z4 ? pageTop(z4) : st + z3.offsetHeight;
-      const inStage = y >= st - vh * 0.85 && y < zone4Top;
+      // Sur mobile, les projecteurs ne restent visibles que pendant la
+      // traversée de "Sur scène" (pas jusqu'à la fin de la page), et
+      // passent derrière le texte (z-index) pour ne jamais le couvrir.
+      const inStage = mobile
+        ? y >= st - vh * 0.6 && y < st + z3.offsetHeight - vh * 0.4
+        : y >= st - vh * 0.85 && y < zone4Top;
+      if (rig) rig.style.zIndex = mobile ? "0" : "2";
 
       if (stage) stage.style.opacity = inStage ? "1" : "0";
       if (rig) rig.style.opacity = inStage ? "1" : "0";
       const leftP = clamp01(local * 1.3);
       const rightP = clamp01((local - 0.1) * 1.3);
-      if (beamL) beamL.style.opacity = inStage ? String(0.25 + leftP * 0.7) : "0";
-      if (beamR) beamR.style.opacity = inStage ? String(0.25 + rightP * 0.7) : "0";
+      const bMin = mobile ? 0.15 : 0.25;
+      const bMax = mobile ? 0.45 : 0.7;
+      if (beamL) beamL.style.opacity = inStage ? String(bMin + leftP * bMax) : "0";
+      if (beamR) beamR.style.opacity = inStage ? String(bMin + rightP * bMax) : "0";
     };
 
     let raf = null;
