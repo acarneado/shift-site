@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ClusterGrid from "@/components/ClusterGrid";
@@ -188,6 +189,21 @@ export default function Formations() {
           Des formats concrets, pensés pour donner à vos équipes des repères communs face aux
           situations professionnelles du quotidien. Un temps collectif, adapté à votre contexte
           d&apos;entreprise, pour avancer et évoluer ensemble.
+        </p>
+      </section>
+
+      <section style={{ padding: "8px clamp(20px,6vw,64px) 8px" }}>
+        <div style={{ position: "relative", aspectRatio: "2 / 1", borderRadius: 20, overflow: "hidden", border: "1px solid var(--border)" }}>
+          <Image
+            src="/images/formations-ambiance.jpg"
+            alt="Alexandre Carneado anime une formation en entreprise, devant un groupe de participants"
+            fill
+            sizes="(max-width: 768px) 100vw, 1200px"
+            style={{ objectFit: "cover" }}
+          />
+        </div>
+        <p style={{ fontFamily: "var(--font-lora), serif", fontStyle: "italic", fontSize: 14, color: "var(--muted)", margin: "12px 0 0" }}>
+          En pleine formation, dans les locaux d&apos;une entreprise cliente.
         </p>
       </section>
 
