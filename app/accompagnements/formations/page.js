@@ -196,14 +196,14 @@ export default function Formations() {
         <div style={{ position: "relative", aspectRatio: "2 / 1", borderRadius: 20, overflow: "hidden", border: "1px solid var(--border)" }}>
           <Image
             src="/images/formations-ambiance.jpg"
-            alt="Alexandre Carneado anime une formation en entreprise, devant un groupe de participants"
+            alt="Alexandre Carneado anime une session lors de la soirée Formations de WeFiiT"
             fill
             sizes="(max-width: 768px) 100vw, 1200px"
             style={{ objectFit: "cover" }}
           />
         </div>
         <p style={{ fontFamily: "var(--font-lora), serif", fontStyle: "italic", fontSize: 14, color: "var(--muted)", margin: "12px 0 0" }}>
-          En pleine formation, dans les locaux d&apos;une entreprise cliente.
+          Participation à la soirée Formations de WeFiiT.
         </p>
       </section>
 
