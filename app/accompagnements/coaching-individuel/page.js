@@ -95,7 +95,7 @@ const APPROACH_TILES = [
   },
 ];
 
-const TESTIMONIALS = [T.hugo, T.camilleP];
+const TESTIMONIALS = [T.hugo, T.camilleP, T.mary];
 
 export default function CoachingIndividuel() {
   return (
